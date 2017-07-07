@@ -156,7 +156,7 @@ public class AnimationBuilder {
         return this;
     }
 
-    public AnimationBuilder color(String propertyName, int... colors) {
+    private AnimationBuilder color(String propertyName, int... colors) {
         for (final RichPath path : paths) {
             ObjectAnimator objectAnimator = ObjectAnimator.ofInt(path, propertyName, colors);
             objectAnimator.setEvaluator(new ArgbEvaluator());
@@ -246,52 +246,8 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder rotation(float... values) {
-
-//        for (final RichPath path : paths) {
-//            float fromValue = path.getRotation();
-//            Log.d("reer", " fromValue: " + fromValue);
-//
-//            for (int i = 0; i < values.length; i++) {
-//
-//                Log.d("reer", "rotation: " + values[i]);
-//
-//                float deltaValue = values[i] - fromValue;
-//                values[i] = deltaValue;
-//                Log.d("reer", "drotation: " + deltaValue);
-//
-//            }
-//        }
-
-
-        for (final RichPath path : paths) {
-            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(path, "rotation", values);
-            objectAnimator.addListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-//                    path.setRotation(-path.getRotation());
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animation) {
-
-                }
-            });
-            applyAnimatorProperties(objectAnimator, path);
-        }
-
-
+        property("rotation", values);
         return this;
-
     }
 
     public AnimationBuilder translationY(float... values) {

@@ -1,10 +1,92 @@
 # Rich Path Animator [![Release](https://jitpack.io/v/tarek360/RichPathAnimator.svg)](https://jitpack.io/#tarek360/RichPathAnimator)
 
-Android library to capture screenshot from your app
-
-
+💪 Rich Android Path .     🤡 Draw as you want .    🎉 Animate much as you can .
 ### Features
-- will add soon
+<img src="/screenshots/samples.gif" align="right" width="120">
+
+ - **Full Control on your Paths and VectorDrawables**:
+ `fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
+
+ - **Animate any path in the VectorDrawable using the PathAnimator**
+ ```java
+PathAnimator.animate(richPath)
+        .trimPathEnd(value1, value2, ...)
+        .fillColor(value1, value2, ...)
+        .start();
+```
+
+ - **Animate multiple paths sequentially or at the same time**
+ ```java
+PathAnimator.animate(richPath1, richPath2)
+        .rotation(value1, value2, ...)
+        //Animate the same path or another with differnet animated attributes.
+        .andAnimate(richPath3)
+        .scale(value1, value2, ...)
+        //Animate after the end of the last animation.
+        .thenAnimate(richPath4)
+        .strokeColor(value1, value2, ...)
+        // start you animation 🎉
+        .start();
+```
+## Example
+
+#### ic_notifications.xml
+<img src="/screenshots/ic_notifications.png" align="right" width="120">
+
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportHeight="32.0"
+    android:viewportWidth="32.0">
+
+    <group
+        android:pivotX="16"
+        android:pivotY="6.25">
+        <path
+            android:name="top"
+            android:fillColor="#FFF7F7F7"
+            android:pathData="M22,19.8v-5c0-3.1-1.6-5.6-4.5-6.3V7.8c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v0.7c-2.9,0.7-4.5,3.2-4.5,6.3v5l-2,2v1h16v-1L22,19.8z" />
+
+        <path
+            android:name="bottom"
+            android:fillColor="#FFF7F7F7"
+            android:pathData="M16,25.8c1.1,0,2-0.9,2-2h-4C14,24.9,14.9,25.8,16,25.8z" />
+    </group>
+
+</vector>
+
+</vector>
+```
+
+#### XML
+```xml
+    <com.richpath.RichPathView
+        android:id="@+id/ic_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vector="@drawable/ic_notifications" />
+```
+
+#### Java
+<img src="/screenshots/ic_notifications.gif" align="right" width="120">
+
+```java
+RichPath top = notificationsRichPathView.findRichPathByName("top");
+RichPath bottom = notificationsRichPathView.findRichPathByName("bottom");
+
+PathAnimator.animate(top)
+        .interpolator(new DecelerateInterpolator())
+        .rotation(0, 20, -20, 10, -10, 5, -5, 2, -2, 0)
+        .duration(4000)
+        .andAnimate(bottom)
+        .interpolator(new DecelerateInterpolator())
+        .rotation(0, 10, -10, 5, -5, 2, -2, 0)
+        .startDelay(50)
+        .duration(4000)
+        .start();
+```
+
 
 ### Installation
 
@@ -25,10 +107,16 @@ allprojects {
 	}
 }
 ```
+# Credits
 
-### Usage
-- will add soon
+- [florent37](https://github.com/florent37) He is the creator of [ViewAnimator](https://github.com/florent37/ViewAnimator) which gave me the idea of this project. Some core concepts and ideas were reused, but everything is written from scratch.
+- [Android](https://android.com/) Some code is reused form the android source code and the VectorDrawableCompat support library.
 
+# Developed By
+
+* Ahmed Tarek
+ * [tarek360.github.io](http://tarek360.github.io/)
+ * [Twitter](https://twitter.com/a_tarek360)
 
 ## License
 
