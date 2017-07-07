@@ -4,15 +4,6 @@
     android:viewportHeight="36.0"
     android:viewportWidth="36.0">
 
-
-
-    <!--<path-->
-        <!--android:name="l_eye"-->
-        <!--android:pathData="M0,0 L0,32 L32,32 L32,0"-->
-        <!--android:fillColor="#FFFF0000"-->
-        <!--android:strokeWidth="0.5"-->
-        <!--android:trimPathEnd="1" />-->
-
     <path
         android:name="head"
         android:pathData="M19.5,6.2l1.3-1.3c0.2-0.2,0.2-0.5,0-0.7c-0.2-0.2-0.5-0.2-0.7,0l-1.5,1.5C17.9,5.2,16.9,5,16,5c-1,0-1.9,0.2-2.7,0.6l-1.5-1.5c-0.2-0.2-0.5-0.2-0.7,0c-0.2,0.2-0.2,0.5,0,0.7l1.3,1.3C11,7.3,10,9,10,11h12C22,9,21,7.2,19.5,6.2z"
