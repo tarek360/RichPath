@@ -53,9 +53,7 @@ PathAnimator.animate(richPath1, richPath2)
             android:fillColor="#FFF7F7F7"
             android:pathData="M16,25.8c1.1,0,2-0.9,2-2h-4C14,24.9,14.9,25.8,16,25.8z" />
     </group>
-
 </vector>
-
 </vector>
 ```
 
