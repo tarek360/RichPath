@@ -1,15 +1,16 @@
-# Rich Path Animator [![Release](https://jitpack.io/v/tarek360/RichPathAnimator.svg)](https://jitpack.io/#tarek360/RichPathAnimator)
+# Rich Path Animator [![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
 
 💪 Rich Android Path .     🤡 Draw as you want .    🎉 Animate much as you can .
 ### Features
 <img src="/screenshots/samples.gif" align="right" width="120">
 
- - **Full Control on your Paths and VectorDrawables**:
- `fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
+- **Full Control on your Paths and VectorDrawables:**
 
- - **Animate any path in the VectorDrawable using the PathAnimator**
+`fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
+
+- **Animate any path in the VectorDrawable using the RichPathAnimator**
  ```java
-PathAnimator.animate(richPath)
+RichPathAnimator.animate(richPath)
         .trimPathEnd(value1, value2, ...)
         .fillColor(value1, value2, ...)
         .start();
@@ -17,7 +18,7 @@ PathAnimator.animate(richPath)
 
  - **Animate multiple paths sequentially or at the same time**
  ```java
-PathAnimator.animate(richPath1, richPath2)
+RichPathAnimator.animate(richPath1, richPath2)
         .rotation(value1, value2, ...)
         //Animate the same path or another with differnet animated attributes.
         .andAnimate(richPath3)
@@ -25,7 +26,7 @@ PathAnimator.animate(richPath1, richPath2)
         //Animate after the end of the last animation.
         .thenAnimate(richPath4)
         .strokeColor(value1, value2, ...)
-        // start you animation 🎉
+        // start your animation 🎉
         .start();
 ```
 ## Example
@@ -73,7 +74,7 @@ PathAnimator.animate(richPath1, richPath2)
 RichPath top = notificationsRichPathView.findRichPathByName("top");
 RichPath bottom = notificationsRichPathView.findRichPathByName("bottom");
 
-PathAnimator.animate(top)
+RichPathAnimator.animate(top)
         .interpolator(new DecelerateInterpolator())
         .rotation(0, 20, -20, 10, -10, 5, -5, 2, -2, 0)
         .duration(4000)
@@ -115,6 +116,7 @@ allprojects {
 * Ahmed Tarek
  * [tarek360.github.io](http://tarek360.github.io/)
  * [Twitter](https://twitter.com/a_tarek360)
+
 
 ## License
 

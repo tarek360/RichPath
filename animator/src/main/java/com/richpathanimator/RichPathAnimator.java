@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PathAnimator {
+public class RichPathAnimator {
 
     private long duration = -1;
     private long startDelay = -1;
@@ -22,8 +22,8 @@ public class PathAnimator {
 
     private AnimatorSet animatorSet;
 
-    private PathAnimator prev;
-    private PathAnimator next;
+    private RichPathAnimator prev;
+    private RichPathAnimator next;
 
     private AnimationListener animationListener;
 
@@ -44,7 +44,7 @@ public class PathAnimator {
     public static final int REVERSE = 2;
 
 
-    private PathAnimator() {
+    private RichPathAnimator() {
     }
 
     AnimationBuilder addAnimationBuilder(RichPath... paths) {
@@ -54,15 +54,15 @@ public class PathAnimator {
     }
 
     public static AnimationBuilder animate(RichPath... paths) {
-        PathAnimator viewAnimator = new PathAnimator();
+        RichPathAnimator viewAnimator = new RichPathAnimator();
         return viewAnimator.addAnimationBuilder(paths);
     }
 
     AnimationBuilder thenAnimate(RichPath... paths) {
-        PathAnimator nextPathAnimator = new PathAnimator();
-        this.next = nextPathAnimator;
-        nextPathAnimator.prev = this;
-        return nextPathAnimator.addAnimationBuilder(paths);
+        RichPathAnimator nextRichPathAnimator = new RichPathAnimator();
+        this.next = nextRichPathAnimator;
+        nextRichPathAnimator.prev = this;
+        return nextRichPathAnimator.addAnimationBuilder(paths);
     }
 
 
@@ -119,7 +119,7 @@ public class PathAnimator {
         return animatorSet;
     }
 
-    PathAnimator start() {
+    RichPathAnimator start() {
         if (prev != null) {
             prev.start();
         } else {
@@ -141,17 +141,17 @@ public class PathAnimator {
         }
     }
 
-    PathAnimator duration(long duration) {
+    RichPathAnimator duration(long duration) {
         this.duration = duration;
         return this;
     }
 
-    PathAnimator startDelay(long startDelay) {
+    RichPathAnimator startDelay(long startDelay) {
         this.startDelay = startDelay;
         return this;
     }
 
-    PathAnimator interpolator(Interpolator interpolator) {
+    RichPathAnimator interpolator(Interpolator interpolator) {
         this.interpolator = interpolator;
         return this;
     }

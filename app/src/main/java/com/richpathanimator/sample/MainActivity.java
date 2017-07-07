@@ -9,7 +9,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
 import com.richpathanimator.AnimationListener;
-import com.richpathanimator.PathAnimator;
+import com.richpathanimator.RichPathAnimator;
 import com.richpath.RichPath;
 import com.richpath.RichPathView;
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         RichPath arrowBottom = arrowSearchRichPathView.findRichPathByName("arrow_head_bottom");
 
         if (reverse) {
-            PathAnimator.animate(stem)
+            RichPathAnimator.animate(stem)
                     .trimPathStart(0f, 0.75f)
                     .trimPathEnd(0.185f, 1f)
                     .andAnimate(searchCircle)
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     .trimPathEnd(0, 1)
                     .start();
         } else {
-            PathAnimator.animate(stem)
+            RichPathAnimator.animate(stem)
                     .trimPathStart(0.75f, 0f)
                     .trimPathEnd(1f, 0.185f)
                     .andAnimate(searchCircle)
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         final RichPath lHand = androidRichPathView.findRichPathByName("l_hand");
 
 
-        PathAnimator.animate(head, rEye, lEye, body, rHand, lHand)
+        RichPathAnimator.animate(head, rEye, lEye, body, rHand, lHand)
                 .trimPathEnd(0, 1)
                 .duration(800)
                 .animationListener(new AnimationListener() {
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         final RichPath top = notificationsRichPathView.findRichPathByName("top");
         final RichPath bottom = notificationsRichPathView.findRichPathByName("bottom");
 
-        PathAnimator.animate(top)
+        RichPathAnimator.animate(top)
                 .interpolator(new DecelerateInterpolator())
                 .rotation(0, 20, -20, 10, -10, 5, -5, 2, -2, 0)
                 .duration(4000)
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         int duration = 400;
 
-        PathAnimator.animate(line1)
+        RichPathAnimator.animate(line1)
                 .trimPathEnd(0, 1)
                 .interpolator(new DecelerateInterpolator())
                 .duration(duration)

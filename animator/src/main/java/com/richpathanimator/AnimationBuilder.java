@@ -1,6 +1,5 @@
 package com.richpathanimator;
 
-import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -11,7 +10,7 @@ import com.richpath.RichPath;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.richpathanimator.PathAnimator.RESTART;
+import static com.richpathanimator.RichPathAnimator.RESTART;
 
 /**
  * Created by tarek on 6/29/17.
@@ -24,7 +23,7 @@ public class AnimationBuilder {
     private static final long DEFAULT_DURATION = 300;
     private static final long DEFAULT_START_DELAY = 0;
 
-    private final PathAnimator pathAnimator;
+    private final RichPathAnimator richPathAnimator;
     private final RichPath[] paths;
     private final List<ValueAnimator> animators = new ArrayList<>();
 
@@ -34,8 +33,8 @@ public class AnimationBuilder {
     private int repeatMode = RESTART;
     private int repeatCount = 0;
 
-    public AnimationBuilder(PathAnimator pathAnimator, RichPath... paths) {
-        this.pathAnimator = pathAnimator;
+    public AnimationBuilder(RichPathAnimator richPathAnimator, RichPath... paths) {
+        this.richPathAnimator = richPathAnimator;
         this.paths = paths;
     }
 
@@ -47,11 +46,11 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder andAnimate(RichPath... paths) {
-        return pathAnimator.addAnimationBuilder(paths);
+        return richPathAnimator.addAnimationBuilder(paths);
     }
 
     public AnimationBuilder thenAnimate(RichPath... paths) {
-        return pathAnimator.thenAnimate(paths);
+        return richPathAnimator.thenAnimate(paths);
     }
 
     /**
@@ -82,9 +81,9 @@ public class AnimationBuilder {
         return this;
     }
 
-    public PathAnimator start() {
-        pathAnimator.start();
-        return pathAnimator;
+    public RichPathAnimator start() {
+        richPathAnimator.start();
+        return richPathAnimator;
     }
 
     List<ValueAnimator> getAnimators() {
@@ -100,7 +99,7 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder durationSet(long duration) {
-        pathAnimator.duration(duration);
+        richPathAnimator.duration(duration);
         return this;
     }
 
@@ -113,7 +112,7 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder startDelaySet(long startDelay) {
-        pathAnimator.startDelay(startDelay);
+        richPathAnimator.startDelay(startDelay);
         return this;
     }
 
@@ -126,11 +125,11 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder interpolatorSet(Interpolator interpolator) {
-        pathAnimator.interpolator(interpolator);
+        richPathAnimator.interpolator(interpolator);
         return this;
     }
 
-    public AnimationBuilder repeatMode(@PathAnimator.RepeatMode int repeatMode) {
+    public AnimationBuilder repeatMode(@RichPathAnimator.RepeatMode int repeatMode) {
         this.repeatMode = repeatMode;
         for (ValueAnimator animator : animators) {
             animator.setRepeatMode(repeatMode);
@@ -277,7 +276,7 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder animationListener(AnimationListener listener) {
-        pathAnimator.setAnimationListener(listener);
+        richPathAnimator.setAnimationListener(listener);
         return this;
     }
 
