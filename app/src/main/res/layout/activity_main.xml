@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.richpathanimator.sample.MainActivity">
+
+    <com.richpath.RichPathView
+        android:id="@+id/ic_arrow_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:onClick="animateArrowToSearch"
+        app:vector="@drawable/ic_arrow_search"/>
+
+    <com.richpath.RichPathView
+        android:id="@+id/ic_android"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:onClick="animateAndroid"
+        app:vector="@drawable/ic_android" />
+
+    <com.richpath.RichPathView
+        android:id="@+id/ic_notifications"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:onClick="animateNotification"
+        app:vector="@drawable/ic_notifications" />
+
+    <com.richpath.RichPathView
+        android:id="@+id/ic_playlist_add_check"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:onClick="animatePlaylistAddCheck"
+        android:layout_weight="1"
+        app:vector="@drawable/ic_playlist_add_check" />
+
+</LinearLayout>
