@@ -2,11 +2,8 @@
 *.apk
 .gradle
 /local.properties
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/libraries
-/.idea/vcs.xml
+.idea/
+git
 .DS_Store
 /build
 /captures

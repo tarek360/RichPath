@@ -1,10 +1,10 @@
 <img src="/screenshots/header.gif" width="400">
+<img src="/screenshots/samples.gif" align="right" width="120">
 
 [![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
 
 💪 Rich Android Path .     🤡 Draw as you want .    🎉 Animate much as you can .
 ### Features
-<img src="/screenshots/samples.gif" align="right" width="120">
 
 - **Full Control on your Paths and VectorDrawables:**
 
