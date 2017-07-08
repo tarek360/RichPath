@@ -15,57 +15,69 @@ import com.richpathanimator.RichPathAnimator;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RichPathView arrowSearchRichPathView;
+    private RichPathView commandRichPathView;
     private RichPathView androidRichPathView;
+    private RichPathView arrowSearchRichPathView;
     private RichPathView notificationsRichPathView;
     private RichPathView playlistAddCheckRichPathView;
     private RichPathView loveFaceRichPathView;
-    private RichPathView commandRichPathView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        arrowSearchRichPathView = (RichPathView) findViewById(R.id.ic_arrow_search);
+        commandRichPathView = (RichPathView) findViewById(R.id.ic_command);
         androidRichPathView = (RichPathView) findViewById(R.id.ic_android);
+        arrowSearchRichPathView = (RichPathView) findViewById(R.id.ic_arrow_search);
         notificationsRichPathView = (RichPathView) findViewById(R.id.ic_notifications);
         playlistAddCheckRichPathView = (RichPathView) findViewById(R.id.ic_playlist_add_check);
         loveFaceRichPathView = (RichPathView) findViewById(R.id.love_face);
-        commandRichPathView = (RichPathView) findViewById(R.id.ic_command);
 
+        animateCommand();
     }
 
-    private boolean reverse = false;
+    public void animateCommand() {
 
-    public void animateArrowToSearch(View view) {
+        final RichPath part1 = commandRichPathView.findRichPathByName("part1");
+        final RichPath part2 = commandRichPathView.findRichPathByName("part2");
+        final RichPath part3 = commandRichPathView.findRichPathByName("part3");
+        final RichPath part4 = commandRichPathView.findRichPathByName("part4");
+        final RichPath part5 = commandRichPathView.findRichPathByName("part5");
+        final RichPath part6 = commandRichPathView.findRichPathByName("part6");
+        final RichPath part7 = commandRichPathView.findRichPathByName("part7");
+        final RichPath part8 = commandRichPathView.findRichPathByName("part8");
 
-        RichPath searchCircle = arrowSearchRichPathView.findRichPathByName("search_circle");
-        RichPath stem = arrowSearchRichPathView.findRichPathByName("stem");
-        RichPath arrowTop = arrowSearchRichPathView.findRichPathByName("arrow_head_top");
-        RichPath arrowBottom = arrowSearchRichPathView.findRichPathByName("arrow_head_bottom");
+        RichPathAnimator
+                .animate(part1)
+                .trimPathOffset(0, 1.0f)
 
-        if (reverse) {
-            RichPathAnimator.animate(stem)
-                    .trimPathStart(0f, 0.75f)
-                    .trimPathEnd(0.185f, 1f)
-                    .andAnimate(searchCircle)
-                    .trimPathEnd(1, 0)
-                    .andAnimate(arrowTop, arrowBottom)
-                    .trimPathEnd(0, 1)
-                    .start();
-        } else {
-            RichPathAnimator.animate(stem)
-                    .trimPathStart(0.75f, 0f)
-                    .trimPathEnd(1f, 0.185f)
-                    .andAnimate(searchCircle)
-                    .trimPathEnd(0, 1)
-                    .andAnimate(arrowTop, arrowBottom)
-                    .trimPathEnd(1, 0)
-                    .start();
-        }
+                .andAnimate(part2)
+                .trimPathOffset(0.125f, 1.125f)
 
-        reverse = !reverse;
+                .andAnimate(part3)
+                .trimPathOffset(0.250f, 1.250f)
+
+                .andAnimate(part4)
+                .trimPathOffset(0.375f, 1.375f)
+
+                .andAnimate(part5)
+                .trimPathOffset(0.500f, 1.500f)
+
+                .andAnimate(part6)
+                .trimPathOffset(0.625f, 1.625f)
+
+                .andAnimate(part7)
+                .trimPathOffset(0.750f, 1.750f)
+
+                .andAnimate(part8)
+                .trimPathOffset(0.875f, 1.875f)
+
+                .durationSet(2000)
+                .repeatModeSet(RichPathAnimator.RESTART)
+                .repeatCountSet(RichPathAnimator.INFINITE)
+                .interpolatorSet(new LinearInterpolator())
+                .start();
     }
 
     public void animateAndroid(View view) {
@@ -76,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         final RichPath lEye = androidRichPathView.findRichPathByName("l_eye");
         final RichPath rHand = androidRichPathView.findRichPathByName("r_hand");
         final RichPath lHand = androidRichPathView.findRichPathByName("l_hand");
-
 
         RichPathAnimator.animate(head, rEye, lEye, body, rHand, lHand)
                 .trimPathEnd(0, 1)
@@ -109,8 +120,37 @@ public class MainActivity extends AppCompatActivity {
                 .rotation(0)
                 .duration(500)
                 .start();
+    }
 
+    private boolean reverse = false;
 
+    public void animateArrowToSearch(View view) {
+
+        RichPath searchCircle = arrowSearchRichPathView.findRichPathByName("search_circle");
+        RichPath stem = arrowSearchRichPathView.findRichPathByName("stem");
+        RichPath arrowTop = arrowSearchRichPathView.findRichPathByName("arrow_head_top");
+        RichPath arrowBottom = arrowSearchRichPathView.findRichPathByName("arrow_head_bottom");
+
+        if (reverse) {
+            RichPathAnimator.animate(stem)
+                    .trimPathStart(0f, 0.75f)
+                    .trimPathEnd(0.185f, 1f)
+                    .andAnimate(searchCircle)
+                    .trimPathEnd(1, 0)
+                    .andAnimate(arrowTop, arrowBottom)
+                    .trimPathEnd(0, 1)
+                    .start();
+        } else {
+            RichPathAnimator.animate(stem)
+                    .trimPathStart(0.75f, 0f)
+                    .trimPathEnd(1f, 0.185f)
+                    .andAnimate(searchCircle)
+                    .trimPathEnd(0, 1)
+                    .andAnimate(arrowTop, arrowBottom)
+                    .trimPathEnd(1, 0)
+                    .start();
+        }
+        reverse = !reverse;
     }
 
     public void animateNotification(View view) {
@@ -202,47 +242,4 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
-    public void animateCommand(View view) {
-
-        final RichPath part1 = commandRichPathView.findRichPathByName("part1");
-        final RichPath part2 = commandRichPathView.findRichPathByName("part2");
-        final RichPath part3 = commandRichPathView.findRichPathByName("part3");
-        final RichPath part4 = commandRichPathView.findRichPathByName("part4");
-        final RichPath part5 = commandRichPathView.findRichPathByName("part5");
-        final RichPath part6 = commandRichPathView.findRichPathByName("part6");
-        final RichPath part7 = commandRichPathView.findRichPathByName("part7");
-        final RichPath part8 = commandRichPathView.findRichPathByName("part8");
-
-
-        RichPathAnimator
-                .animate(part1)
-                .trimPathOffset(0, 1.0f)
-
-                .andAnimate(part2)
-                .trimPathOffset(0.125f, 1.125f)
-
-                .andAnimate(part3)
-                .trimPathOffset(0.250f, 1.250f)
-
-                .andAnimate(part4)
-                .trimPathOffset(0.375f, 1.375f)
-
-                .andAnimate(part5)
-                .trimPathOffset(0.500f, 1.500f)
-
-                .andAnimate(part6)
-                .trimPathOffset(0.625f, 1.625f)
-
-                .andAnimate(part7)
-                .trimPathOffset(0.750f, 1.750f)
-
-                .andAnimate(part8)
-                .trimPathOffset(0.875f, 1.875f)
-
-                .durationSet(2000)
-                .repeatModeSet(RichPathAnimator.RESTART)
-                .repeatCountSet(RichPathAnimator.INFINITE)
-                .interpolatorSet(new LinearInterpolator())
-                .start();
-    }
 }
