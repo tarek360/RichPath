@@ -137,11 +137,21 @@ public class AnimationBuilder {
         return this;
     }
 
+    public AnimationBuilder repeatModeSet(@RichPathAnimator.RepeatMode int repeatMode) {
+        richPathAnimator.repeatMode(repeatMode);
+        return this;
+    }
+
     public AnimationBuilder repeatCount(int repeatCount) {
         this.repeatCount = repeatCount;
         for (ValueAnimator animator : animators) {
             animator.setRepeatCount(repeatCount);
         }
+        return this;
+    }
+
+    public AnimationBuilder repeatCountSet(int repeatCount) {
+        richPathAnimator.repeatCount(repeatCount);
         return this;
     }
 

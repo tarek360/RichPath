@@ -17,6 +17,8 @@ public class RichPathAnimator {
     private long duration = -1;
     private long startDelay = -1;
     private Interpolator interpolator;
+    private int repeatMode = -2;
+    private int repeatCount = -2;
 
     private List<AnimationBuilder> animationBuilders = new ArrayList<>();
 
@@ -33,16 +35,20 @@ public class RichPathAnimator {
     }
 
     /**
-     * When the animation reaches the end and <code>repeatCount</code> is INFINITE
+     * When the animation reaches the end and {@link AnimationBuilder#repeatCount(int)} is INFINITE
      * or a positive value, the animation restarts from the beginning.
      */
     public static final int RESTART = 1;
     /**
-     * When the animation reaches the end and <code>repeatCount</code> is INFINITE
+     * When the animation reaches the end and {@link AnimationBuilder#repeatCount(int)} is INFINITE
      * or a positive value, the animation reverses direction on every iteration.
      */
     public static final int REVERSE = 2;
-
+    /**
+     * This value used with the {@link AnimationBuilder#repeatCount(int)} property to repeat
+     * the animation indefinitely.
+     */
+    public static final int INFINITE = -1;
 
     private RichPathAnimator() {
     }
@@ -71,6 +77,13 @@ public class RichPathAnimator {
         for (AnimationBuilder animationBuilder : animationBuilders) {
             List<ValueAnimator> animatorList = animationBuilder.getAnimators();
             animators.addAll(animatorList);
+            if (repeatMode != -2) {
+                animationBuilder.repeatMode(repeatMode);
+            }
+
+            if (repeatCount != -2) {
+                animationBuilder.repeatCount(repeatCount);
+            }
         }
 
         AnimatorSet animatorSet = new AnimatorSet();
@@ -83,6 +96,7 @@ public class RichPathAnimator {
         if (startDelay != -1) {
             animatorSet.setStartDelay(startDelay);
         }
+
 
         if (interpolator != null) {
             animatorSet.setInterpolator(interpolator);
@@ -153,6 +167,16 @@ public class RichPathAnimator {
 
     RichPathAnimator interpolator(Interpolator interpolator) {
         this.interpolator = interpolator;
+        return this;
+    }
+
+    RichPathAnimator repeatMode(int repeatMode) {
+        this.repeatMode = repeatMode;
+        return this;
+    }
+
+    RichPathAnimator repeatCount(int repeatCount) {
+        this.repeatCount = repeatCount;
         return this;
     }
 

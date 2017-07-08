@@ -17,8 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textSize="18sp"
-            android:text="Tap the shape to animate it" />
+            android:text="Tap the shape to animate it"
+            android:textSize="18sp" />
 
         <com.richpath.RichPathView
             android:id="@+id/ic_android"
@@ -53,12 +53,21 @@
             app:vector="@drawable/ic_playlist_add_check" />
 
         <com.richpath.RichPathView
+            android:id="@+id/ic_command"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="animateCommand"
+            app:vector="@drawable/ic_command" />
+
+        <com.richpath.RichPathView
             android:id="@+id/love_face"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:onClick="animateLoveFace"
             app:vector="@drawable/face_love" />
+
 
     </LinearLayout>
 </ScrollView>

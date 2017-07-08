@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private RichPathView androidRichPathView;
     private RichPathView notificationsRichPathView;
     private RichPathView playlistAddCheckRichPathView;
-    private RichPathView loveFace;
+    private RichPathView loveFaceRichPathView;
+    private RichPathView commandRichPathView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         androidRichPathView = (RichPathView) findViewById(R.id.ic_android);
         notificationsRichPathView = (RichPathView) findViewById(R.id.ic_notifications);
         playlistAddCheckRichPathView = (RichPathView) findViewById(R.id.ic_playlist_add_check);
-        loveFace = (RichPathView) findViewById(R.id.love_face);
+        loveFaceRichPathView = (RichPathView) findViewById(R.id.love_face);
+        commandRichPathView = (RichPathView) findViewById(R.id.ic_command);
 
     }
 
@@ -183,8 +185,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void animateLoveFace(View view) {
 
-        final RichPath rEye = loveFace.findRichPathByName("r_eye");
-        final RichPath lEye = loveFace.findRichPathByName("l_eye");
+        final RichPath rEye = loveFaceRichPathView.findRichPathByName("r_eye");
+        final RichPath lEye = loveFaceRichPathView.findRichPathByName("l_eye");
 
         rEye.setPivotToCenter(true);
         lEye.setPivotToCenter(true);
@@ -194,9 +196,53 @@ public class MainActivity extends AppCompatActivity {
                 .interpolator(new LinearInterpolator())
                 .duration(800)
                 .repeatMode(RichPathAnimator.RESTART)
-                .repeatCount(-1)
+                .repeatCount(RichPathAnimator.INFINITE)
                 .scale(1, 0.9f, 1.07f, 1)
                 .fillColor(0XFFF52C5B, 0xFFF24976, 0XFFD61A4C, 0XFFF52C5B)
+                .start();
+    }
+
+    public void animateCommand(View view) {
+
+        final RichPath part1 = commandRichPathView.findRichPathByName("part1");
+        final RichPath part2 = commandRichPathView.findRichPathByName("part2");
+        final RichPath part3 = commandRichPathView.findRichPathByName("part3");
+        final RichPath part4 = commandRichPathView.findRichPathByName("part4");
+        final RichPath part5 = commandRichPathView.findRichPathByName("part5");
+        final RichPath part6 = commandRichPathView.findRichPathByName("part6");
+        final RichPath part7 = commandRichPathView.findRichPathByName("part7");
+        final RichPath part8 = commandRichPathView.findRichPathByName("part8");
+
+
+        RichPathAnimator
+                .animate(part1)
+                .trimPathOffset(0, 1.0f)
+
+                .andAnimate(part2)
+                .trimPathOffset(0.125f, 1.125f)
+
+                .andAnimate(part3)
+                .trimPathOffset(0.250f, 1.250f)
+
+                .andAnimate(part4)
+                .trimPathOffset(0.375f, 1.375f)
+
+                .andAnimate(part5)
+                .trimPathOffset(0.500f, 1.500f)
+
+                .andAnimate(part6)
+                .trimPathOffset(0.625f, 1.625f)
+
+                .andAnimate(part7)
+                .trimPathOffset(0.750f, 1.750f)
+
+                .andAnimate(part8)
+                .trimPathOffset(0.875f, 1.875f)
+
+                .durationSet(2000)
+                .repeatModeSet(RichPathAnimator.RESTART)
+                .repeatCountSet(RichPathAnimator.INFINITE)
+                .interpolatorSet(new LinearInterpolator())
                 .start();
     }
 }

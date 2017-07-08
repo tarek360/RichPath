@@ -58,9 +58,9 @@ public class Vector {
 
     public void inflate(XmlResourceParser xpp, Context context) {
 
-        name = XmlParser.getAttributeString(xpp, "name", name);
+        name = XmlParser.getAttributeString(context, xpp, "name", name);
 
-        tint = XmlParser.getAttributeColor(xpp, "tint", tint);
+        tint = XmlParser.getAttributeColor(context, xpp, "tint", tint);
 
         width = XmlParser.getAttributeDimen(context, xpp, "width", width);
 

@@ -1,5 +1,6 @@
 package com.richpath;
 
+import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -369,17 +370,17 @@ public class RichPath extends Path {
         paint.setStrokeWidth(strokeWidth * scale);
     }
 
-    public void inflate(XmlResourceParser xpp) {
+    public void inflate(Context context, XmlResourceParser xpp) {
 
-        name = XmlParser.getAttributeString(xpp, "name", name);
+        name = XmlParser.getAttributeString(context, xpp, "name", name);
 
         fillAlpha = XmlParser.getAttributeFloat(xpp, "fillAlpha", fillAlpha);
 
-        fillColor = XmlParser.getAttributeColor(xpp, "fillColor", fillColor);
+        fillColor = XmlParser.getAttributeColor(context, xpp, "fillColor", fillColor);
 
         strokeAlpha = XmlParser.getAttributeFloat(xpp, "strokeAlpha", strokeAlpha);
 
-        strokeColor = XmlParser.getAttributeColor(xpp, "strokeColor", strokeColor);
+        strokeColor = XmlParser.getAttributeColor(context, xpp, "strokeColor", strokeColor);
 
         strokeLineCap = XmlParser.getAttributeStrokeLineCap(xpp, "strokeLineCap", strokeLineCap);
 

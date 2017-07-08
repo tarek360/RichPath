@@ -93,6 +93,8 @@ public class RichPathView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+        if (vector == null) return;
+
         setMeasuredDimension((int) Utils.dpToPixel(getContext(), vector.getWidth()),
                 (int) Utils.dpToPixel(getContext(), vector.getHeight()));
     }

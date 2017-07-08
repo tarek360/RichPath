@@ -5,6 +5,8 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 
 import com.richpath.RichPath;
 import com.richpath.model.Group;
@@ -43,7 +45,7 @@ public class XmlParser {
                         break;
 
                     case Group.TAG_NAME:
-                        Group group = parseGroupElement(xpp);
+                        Group group = parseGroupElement(context, xpp);
                         if (!groupStack.empty()) {
                             group.scale(groupStack.peek().matrix());
                         }
@@ -51,7 +53,7 @@ public class XmlParser {
                         break;
 
                     case RichPath.TAG_NAME:
-                        RichPath path = parsePathElement(xpp);
+                        RichPath path = parsePathElement(context, xpp);
                         if (!groupStack.empty()) {
                             path.applyGroup(groupStack.peek());
                         }
@@ -77,19 +79,26 @@ public class XmlParser {
         vector.inflate(xpp, context);
     }
 
-    private static Group parseGroupElement(XmlResourceParser xpp) {
-        return new Group(xpp);
+    private static Group parseGroupElement(Context context, XmlResourceParser xpp) {
+        return new Group(context, xpp);
     }
 
-    private static RichPath parsePathElement(XmlResourceParser xpp) {
-        String pathData = getAttributeString(xpp, "pathData", null);
+    private static RichPath parsePathElement(Context context, XmlResourceParser xpp) {
+        String pathData = getAttributeString(context, xpp, "pathData", null);
         RichPath path = new RichPath(pathData);
-        path.inflate(xpp);
+        path.inflate(context, xpp);
         return path;
     }
 
-    public static String getAttributeString(XmlResourceParser xpp, String attributeName, String defValue) {
-        String value = getAttributeValue(xpp, attributeName);
+    public static String getAttributeString(Context context, XmlResourceParser xpp, String attributeName, String defValue) {
+
+        int resourceId = getAttributeResourceValue(xpp, attributeName);
+        String value;
+        if (resourceId != -1) {
+            value = context.getString(resourceId);
+        } else {
+            value = getAttributeValue(xpp, attributeName);
+        }
         return value != null ? value : defValue;
     }
 
@@ -115,7 +124,12 @@ public class XmlParser {
         return value != null ? Integer.parseInt(value) : defValue;
     }
 
-    public static int getAttributeColor(XmlResourceParser xpp, String attributeName, int defValue) {
+    public static int getAttributeColor(Context context, XmlResourceParser xpp, String attributeName, int defValue) {
+        int resourceId = getAttributeResourceValue(xpp, attributeName);
+        if (resourceId != -1) {
+            return ContextCompat.getColor(context, resourceId);
+        }
+
         String value = getAttributeValue(xpp, attributeName);
         return value != null ? Color.parseColor(value) : defValue;
     }
@@ -136,8 +150,13 @@ public class XmlParser {
         return value != null ? getPathFillType(Integer.parseInt(value), defValue) : defValue;
     }
 
+    @Nullable
     private static String getAttributeValue(XmlResourceParser xpp, String attributeName) {
         return xpp.getAttributeValue(NAMESPACE, attributeName);
+    }
+
+    private static int getAttributeResourceValue(XmlResourceParser xpp, String attributeName) {
+        return xpp.getAttributeResourceValue(NAMESPACE, attributeName, -1);
     }
 
     private static Paint.Cap getStrokeLineCap(int id, Paint.Cap defValue) {

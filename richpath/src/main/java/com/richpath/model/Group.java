@@ -1,5 +1,6 @@
 package com.richpath.model;
 
+import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.graphics.Matrix;
 
@@ -25,8 +26,8 @@ public class Group {
     private String name;
     private Matrix matrix;
 
-    public Group(XmlResourceParser xpp) {
-        inflate(xpp);
+    public Group(Context context, XmlResourceParser xpp) {
+        inflate(context, xpp);
     }
 
     public float getRotation() {
@@ -61,9 +62,9 @@ public class Group {
         return name;
     }
 
-    private void inflate(XmlResourceParser xpp) {
+    private void inflate(Context context, XmlResourceParser xpp) {
 
-        name = XmlParser.getAttributeString(xpp, "name", name);
+        name = XmlParser.getAttributeString(context, xpp, "name", name);
 
         rotation = XmlParser.getAttributeFloat(xpp, "rotation", rotation);
 
