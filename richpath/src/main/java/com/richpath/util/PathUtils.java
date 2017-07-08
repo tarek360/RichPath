@@ -29,7 +29,6 @@ public class PathUtils {
         path.transform(resizeMatrix);
     }
 
-
     public static void setPathHeight(Path path, float height) {
         RectF src = new RectF();
         path.computeBounds(src, true);
@@ -76,15 +75,28 @@ public class PathUtils {
         path.transform(matrix);
     }
 
-    public static void setPathScaleX(Path path, float scaleX) {
+
+    public static void setPathScaleX(Path path, float scale, float px, float py) {
         Matrix matrix = new Matrix();
-        matrix.setScale(scaleX, 1);
+        matrix.setScale(scale, 1, px, py);
         path.transform(matrix);
     }
 
-    public static void setPathScaleY(Path path, float scaleY) {
+    public static void setPathScaleY(Path path, float scale, float px, float py) {
         Matrix matrix = new Matrix();
-        matrix.setScale(1, scaleY);
+        matrix.setScale(1, scale, px, py);
         path.transform(matrix);
+    }
+
+    public static void setPathScaleX(Path path, float scale) {
+        RectF rect = new RectF();
+        path.computeBounds(rect, true);
+        setPathScaleX(path, scale, rect.centerX(), rect.centerY());
+    }
+
+    public static void setPathScaleY(Path path, float scale) {
+        RectF rect = new RectF();
+        path.computeBounds(rect, true);
+        setPathScaleY(path, scale, rect.centerX(), rect.centerY());
     }
 }

@@ -197,35 +197,13 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder scaleX(float... values) {
-        scale("width", values);
+        property("scaleX", values);
         return this;
     }
 
     public AnimationBuilder scaleY(float... values) {
-        scale("height", values);
+        property("scaleY", values);
         return this;
-    }
-
-    private void scale(String propertyName, float... values) {
-
-        for (final RichPath path : paths) {
-
-            float[] scaledValues = new float[values.length];
-
-            float pathDimen;
-            if (propertyName.equals("height")) {
-                pathDimen = path.getOriginalHeight();
-            } else {
-                pathDimen = path.getOriginalWidth();
-            }
-
-            for (int i = 0; i < values.length; i++) {
-                scaledValues[i] = pathDimen * values[i];
-            }
-
-            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(path, propertyName, scaledValues);
-            applyAnimatorProperties(objectAnimator, path);
-        }
     }
 
     public AnimationBuilder scale(float... values) {
