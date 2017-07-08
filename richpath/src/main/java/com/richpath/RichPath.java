@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.util.Log;
 
 import com.richpath.listener.OnRichPathUpdatedListener;
 import com.richpath.model.Group;
@@ -40,6 +39,8 @@ public class RichPath extends Path {
     private String name;
     private Paint paint;
     private float rotation;
+    private float scaleX = 1;
+    private float scaleY = 1;
     private float translationX;
     private float translationY;
     private float originalWidth;
@@ -123,6 +124,56 @@ public class RichPath extends Path {
             PathUtils.setPathRotation(originalPath, deltaValue, pivotX, pivotY);
         }
         this.rotation = rotation;
+        onPathUpdated();
+    }
+
+    public float getScaleX() {
+        return scaleX;
+    }
+
+    public void setScaleX(float scaleX) {
+
+        if (pivotToCenter) {
+            //reset scaling
+            PathUtils.setPathScaleX(this, 1.0f / this.scaleX);
+            PathUtils.setPathScaleX(originalPath, 1.0f / this.scaleX);
+            //new scaling
+            PathUtils.setPathScaleX(this, scaleX);
+            PathUtils.setPathScaleX(originalPath, scaleX);
+        } else {
+            //reset scaling
+            PathUtils.setPathScaleX(this, 1.0f / this.scaleX, pivotX, pivotY);
+            PathUtils.setPathScaleX(originalPath, 1.0f / this.scaleX, pivotX, pivotY);
+            //new scaling
+            PathUtils.setPathScaleX(this, scaleX, pivotX, pivotY);
+            PathUtils.setPathScaleX(originalPath, scaleX, pivotX, pivotY);
+        }
+        this.scaleX = scaleX;
+        onPathUpdated();
+    }
+
+    public float getScaleY() {
+        return scaleY;
+    }
+
+    public void setScaleY(float scaleY) {
+
+        if (pivotToCenter) {
+            //reset scaling
+            PathUtils.setPathScaleY(this, 1.0f / this.scaleY);
+            PathUtils.setPathScaleY(originalPath, 1.0f / this.scaleY);
+            //new scaling
+            PathUtils.setPathScaleY(this, scaleY);
+            PathUtils.setPathScaleY(originalPath, scaleY);
+        } else {
+            //reset scaling
+            PathUtils.setPathScaleY(this, 1.0f / this.scaleY, pivotX, pivotY);
+            PathUtils.setPathScaleY(originalPath, 1.0f / this.scaleY, pivotX, pivotY);
+            //new scaling
+            PathUtils.setPathScaleY(this, scaleY, pivotX, pivotY);
+            PathUtils.setPathScaleY(originalPath, scaleY, pivotX, pivotY);
+        }
+        this.scaleY = scaleY;
         onPathUpdated();
     }
 

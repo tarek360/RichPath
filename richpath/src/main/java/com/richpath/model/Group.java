@@ -85,9 +85,10 @@ public class Group {
     public Matrix matrix() {
         if (matrix == null) {
             matrix = new Matrix();
-            matrix.postScale(scaleX, scaleY, pivotX, pivotY);
-            matrix.postRotate(rotation, pivotX, pivotY);
-            matrix.postTranslate(translateX, translateY);
+            matrix.postTranslate(-pivotX, -pivotY);
+            matrix.postScale(scaleX, scaleY);
+            matrix.postRotate(rotation, 0, 0);
+            matrix.postTranslate(translateX + pivotX, translateY + pivotY);
         }
         return matrix;
     }

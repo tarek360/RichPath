@@ -8,10 +8,10 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.richpathanimator.AnimationListener;
-import com.richpathanimator.RichPathAnimator;
 import com.richpath.RichPath;
 import com.richpath.RichPathView;
+import com.richpathanimator.AnimationListener;
+import com.richpathanimator.RichPathAnimator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private RichPathView androidRichPathView;
     private RichPathView notificationsRichPathView;
     private RichPathView playlistAddCheckRichPathView;
+    private RichPathView loveFace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         androidRichPathView = (RichPathView) findViewById(R.id.ic_android);
         notificationsRichPathView = (RichPathView) findViewById(R.id.ic_notifications);
         playlistAddCheckRichPathView = (RichPathView) findViewById(R.id.ic_playlist_add_check);
+        loveFace = (RichPathView) findViewById(R.id.love_face);
+
     }
 
     private boolean reverse = false;
@@ -178,4 +181,22 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
+    public void animateLoveFace(View view) {
+
+        final RichPath rEye = loveFace.findRichPathByName("r_eye");
+        final RichPath lEye = loveFace.findRichPathByName("l_eye");
+
+        rEye.setPivotToCenter(true);
+        lEye.setPivotToCenter(true);
+
+        RichPathAnimator
+                .animate(rEye, lEye)
+                .interpolator(new LinearInterpolator())
+                .duration(800)
+                .repeatMode(RichPathAnimator.RESTART)
+                .repeatCount(-1)
+                .scale(1, 0.9f, 1.07f, 1)
+                .fillColor(0XFFF52C5B, 0xFFF24976, 0XFFD61A4C, 0XFFF52C5B)
+                .start();
+    }
 }
