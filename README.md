@@ -6,11 +6,28 @@
 💪 Rich Android Path .     🤡 Draw as you want .    🎉 Animate much as you can .
 ### Features
 
-- **Full Control on your Paths and VectorDrawables:**
+- **Full Animation Control on Paths and VectorDrawables:**
+Animate any attribute in a specific path in the VectorDrawable
 
 `fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
 
-- **Animate any path in the VectorDrawable using the RichPathAnimator**
+## Just 3 Steps to Animate any path.
+
+#### 1. In your layout.
+```xml
+    <com.richpath.RichPathView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vector="@drawable/vector_drawable" />
+```
+
+#### 2. Find your richPath.
+ ```java
+RichPath richPath = richPathView.findRichPathByName("path_name");
+
+```
+
+#### 3. Use the RichPathAnimator to animate your richPath.
  ```java
 RichPathAnimator.animate(richPath)
         .trimPathEnd(value1, value2, ...)
@@ -18,22 +35,9 @@ RichPathAnimator.animate(richPath)
         .start();
 ```
 
- - **Animate multiple paths sequentially or at the same time**
- ```java
-RichPathAnimator.animate(richPath1, richPath2)
-        .rotation(value1, value2, ...)
-        //Animate the same path or another with differnet animated attributes.
-        .andAnimate(richPath3)
-        .scale(value1, value2, ...)
-        //Animate after the end of the last animation.
-        .thenAnimate(richPath4)
-        .strokeColor(value1, value2, ...)
-        // start your animation 🎉
-        .start();
-```
 ## Example
 
-#### ic_notifications.xml
+#### notification icon vector drawable
 <img src="/screenshots/ic_notifications.png" align="right" width="120">
 
 ```xml
@@ -91,7 +95,7 @@ RichPathAnimator.animate(top)
 
 ### Installation
 
-Add this to your module `build.gradle` file:
+Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
@@ -108,6 +112,27 @@ allprojects {
 	}
 }
 ```
+
+### More Control by the RichPathAnimator
+
+ - **Animate multiple paths sequentially or at the same time**
+ ```java
+RichPathAnimator
+        .animate(richPath1, richPath2)
+        .rotation(value1, value2, ...)
+
+        //Animate the same path or another with different animated attributes.
+        .andAnimate(richPath3)
+        .scale(value1, value2, ...)
+
+        //Animate after the end of the last animation.
+        .thenAnimate(richPath4)
+        .strokeColor(value1, value2, ...)
+
+        // start your animation 🎉
+        .start();
+```
+
 # Credits
 
 - [florent37](https://github.com/florent37) He is the creator of [ViewAnimator](https://github.com/florent37/ViewAnimator) which gave me the idea of this project. Some core concepts and ideas were reused, but everything is written from scratch.
