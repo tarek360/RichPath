@@ -3,7 +3,11 @@
 
 [![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
 
-💪 Rich Android Path .     🤡 Draw as you want .    🎉 Animate much as you can .
+💪 Rich Android Path.     🤡 Draw as you want.    🎉 Animate much as you can.
+
+### Download sample app:
+[![](http://s25.postimg.org/l7tmfhxy7/get_it_on_google_play.jpg)](https://play.google.com/store/apps/details?id=com.pathanimator.sample)
+
 ### Features
 
 - **Full Animation Control on Paths and VectorDrawables:**

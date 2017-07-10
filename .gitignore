@@ -8,3 +8,4 @@ git
 /build
 /captures
 .externalNativeBuild
+*.jks
