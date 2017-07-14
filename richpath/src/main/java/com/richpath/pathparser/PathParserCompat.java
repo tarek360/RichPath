@@ -61,6 +61,11 @@ class PathParserCompat {
      */
     static Path createPathFromPathData(String pathData) {
         Path path = new Path();
+        createPathFromPathData(path, pathData);
+        return path;
+    }
+
+    static void createPathFromPathData(Path path, String pathData) {
         PathDataNode[] nodes = createNodesFromPathData(pathData);
         if (nodes != null) {
             try {
@@ -68,9 +73,7 @@ class PathParserCompat {
             } catch (RuntimeException e) {
                 throw new RuntimeException("Error in parsing " + pathData, e);
             }
-            return path;
         }
-        return null;
     }
 
     /**

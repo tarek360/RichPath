@@ -21,4 +21,8 @@ public class PathParser {
         }
     }
 
+    public static void createPathFromPathData(Path path, String pathData) {
+        PathParserCompat.createPathFromPathData(path, pathData);
+    }
+
 }

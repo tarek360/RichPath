@@ -36,6 +36,14 @@
             app:vector="@drawable/ic_android" />
 
         <com.richpath.RichPathView
+            android:id="@+id/animal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="animateAnimal"
+            app:vector="@drawable/animal" />
+
+        <com.richpath.RichPathView
             android:id="@+id/ic_arrow_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

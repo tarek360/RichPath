@@ -174,6 +174,15 @@ public class AnimationBuilder {
         return this;
     }
 
+    public AnimationBuilder pathData(String... pathData) {
+        for (final RichPath path : paths) {
+            ObjectAnimator objectAnimator =
+                    ObjectAnimator.ofObject(path, "pathData", new PathEvaluator(), pathData);
+            applyAnimatorProperties(objectAnimator, path);
+        }
+        return this;
+    }
+
     private void applyAnimatorProperties(ValueAnimator animator, final RichPath path) {
 
         if (path == null) {

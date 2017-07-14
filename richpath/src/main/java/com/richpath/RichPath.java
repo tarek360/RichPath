@@ -15,6 +15,9 @@ import com.richpath.pathparser.PathParser;
 import com.richpath.util.PathUtils;
 import com.richpath.util.XmlParser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tarek on 6/29/17.
  */
@@ -57,6 +60,9 @@ public class RichPath extends Path {
 
     private Path originalPath;
 
+    private String pathData;
+    private List<Matrix> matrices;
+
     public RichPath(String pathData) {
         this(PathParser.createPathFromPathData(pathData));
     }
@@ -70,7 +76,7 @@ public class RichPath extends Path {
     private void init() {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.STROKE);
-
+        matrices = new ArrayList<>();
         updateOriginalDimens();
     }
 
@@ -353,6 +359,7 @@ public class RichPath extends Path {
     }
 
     void mapToMatrix(Matrix matrix) {
+        matrices.add(matrix);
         transform(matrix);
         originalPath.transform(matrix);
         mapPoints(matrix);
@@ -370,7 +377,25 @@ public class RichPath extends Path {
         paint.setStrokeWidth(strokeWidth * scale);
     }
 
+
+    public String getPathData() {
+        return pathData;
+    }
+
+    public void setPathData(String pathData) {
+        PathUtils.setPathData(this, pathData);
+        this.pathData = pathData;
+
+        for (Matrix matrix : matrices) {
+            transform(matrix);
+        }
+
+        onPathUpdated();
+    }
+
     public void inflate(Context context, XmlResourceParser xpp) {
+
+        pathData = XmlParser.getAttributeString(context, xpp, "pathData", name);
 
         name = XmlParser.getAttributeString(context, xpp, "name", name);
 

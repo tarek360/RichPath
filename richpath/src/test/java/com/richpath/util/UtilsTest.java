@@ -1,7 +1,5 @@
 package com.richpath.util;
 
-import com.richpath.util.Utils;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,6 +16,4 @@ public class UtilsTest {
         assertEquals(22f, Utils.getDimenFromString("22px"), 0);
 
     }
-
-
 }

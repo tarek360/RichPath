@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RichPathView notificationsRichPathView;
     private RichPathView playlistAddCheckRichPathView;
     private RichPathView loveFaceRichPathView;
+    private RichPathView animalRichPathView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         notificationsRichPathView = (RichPathView) findViewById(R.id.ic_notifications);
         playlistAddCheckRichPathView = (RichPathView) findViewById(R.id.ic_playlist_add_check);
         loveFaceRichPathView = (RichPathView) findViewById(R.id.love_face);
+        animalRichPathView = (RichPathView) findViewById(R.id.animal);
 
         animateCommand();
     }
@@ -119,6 +121,30 @@ public class MainActivity extends AppCompatActivity {
                 .thenAnimate(rHand)
                 .rotation(0)
                 .duration(500)
+                .start();
+    }
+
+    public void animateAnimal(View view) {
+
+        String hippoPathData = getString(R.string.hippo_path);
+        String elephantPathData = getString(R.string.elephant_path);
+        String bullPathData = getString(R.string.bull_path);
+
+        final RichPath richPath = animalRichPathView.findRichPathByName("path");
+
+        RichPathAnimator
+                .animate(richPath)
+                .pathData(elephantPathData)
+                .duration(600)
+
+                .thenAnimate(richPath)
+                .pathData(bullPathData)
+                .duration(600)
+
+                .thenAnimate(richPath)
+                .pathData(hippoPathData)
+                .duration(600)
+
                 .start();
     }
 
