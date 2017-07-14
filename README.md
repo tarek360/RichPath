@@ -1,7 +1,7 @@
 <img src="/screenshots/header.gif" width="400">
 <img src="/screenshots/samples.gif" align="right" width="120">
 
-[![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
+[![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) ![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
 
 💪 Rich Android Path.     🤡 Draw as you want.    🎉 Animate much as you can.
 
@@ -14,6 +14,16 @@
 Animate any attribute in a specific path in the VectorDrawable
 
 `fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
+
+- **Path morphing:**
+
+<img src="/screenshots/animal_path_morphing.gif" width="250">
+
+```Java
+RichPathAnimator.animate(richPath)
+       .pathData(pathData1, pathData2, ...)
+       .start();
+```
 
 ## Just 3 Steps to Animate any path.
 
@@ -103,7 +113,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.tarek360.RichPath:animator:0.0.3'
+	compile 'com.github.tarek360.RichPath:animator:0.0.4'
 }
 ```
 
@@ -137,12 +147,18 @@ RichPathAnimator
         .start();
 ```
 
-# Credits
+## TODO
+- Optimize the path morphing animation performance.
+- ...
+
+
+## Credits
 
 - [florent37](https://github.com/florent37) He is the creator of [ViewAnimator](https://github.com/florent37/ViewAnimator) which gave me the idea of this project. Some core concepts and ideas were reused, but everything is written from scratch.
 - [Android](https://android.com/) Some code is reused form the android source code and the VectorDrawableCompat support library.
+- [Alex Lockwood](https://github.com/alexjlockwood) The paths of the morphing sample is extracted from the [Shape Shifter](https://github.com/alexjlockwood/ShapeShifter) demo.
 
-# Developed By
+## Developed By
 
 * Ahmed Tarek
  * [tarek360.github.io](http://tarek360.github.io/)
