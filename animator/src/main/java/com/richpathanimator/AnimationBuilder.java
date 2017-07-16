@@ -3,9 +3,12 @@ package com.richpathanimator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.util.Log;
 import android.view.animation.Interpolator;
 
 import com.richpath.RichPath;
+import com.richpath.pathparser.PathDataNode;
+import com.richpath.pathparser.PathParserCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -175,9 +178,20 @@ public class AnimationBuilder {
     }
 
     public AnimationBuilder pathData(String... pathData) {
+
+        PathDataNode[][] pathDataNodes = new PathDataNode[pathData.length][];
+        for (int i = 0; i < pathData.length; i++) {
+            pathDataNodes[i] = PathParserCompat.createNodesFromPathData(pathData[i]);
+        }
+
+        if (!PathParserCompat.canMorph(pathDataNodes)) {
+            Log.w("RichPathAnimator", "the paths aren't compatible for morphing. The paths should have exact same length of commands, and exact same length of parameters for each command");
+            return this;
+        }
+
         for (final RichPath path : paths) {
             ObjectAnimator objectAnimator =
-                    ObjectAnimator.ofObject(path, "pathData", new PathEvaluator(), pathData);
+                    ObjectAnimator.ofObject(path, "pathDataNodes", new PathEvaluator(), pathDataNodes);
             applyAnimatorProperties(objectAnimator, path);
         }
         return this;

@@ -113,7 +113,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.tarek360.RichPath:animator:0.0.4'
+	compile 'com.github.tarek360.RichPath:animator:0.0.5'
 }
 ```
 
@@ -146,10 +146,6 @@ RichPathAnimator
         // start your animation 🎉
         .start();
 ```
-
-## TODO
-- Optimize the path morphing animation performance.
-- ...
 
 
 ## Credits

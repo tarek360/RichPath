@@ -4,6 +4,7 @@ import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
 
+import com.richpath.pathparser.PathDataNode;
 import com.richpath.pathparser.PathParser;
 
 /**
@@ -102,9 +103,8 @@ public class PathUtils {
         setPathScaleY(path, scale, rect.centerX(), rect.centerY());
     }
 
-    public static void setPathData(Path path, String pathData) {
+    public static void setPathDataNodes(Path path, PathDataNode[] pathDataNodes) {
         path.reset();
-        PathParser.createPathFromPathData(path, pathData);
+        PathDataNode.nodesToPath(pathDataNodes, path);
     }
-
 }
