@@ -15,7 +15,7 @@ Animate any attribute in a specific path in the VectorDrawable
 
 `fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
 
-- **Path morphing:**
+- **Path morphing on API +11 :** 💪
 
 <img src="/screenshots/animal_path_morphing.gif" width="250">
 
@@ -113,7 +113,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.tarek360.RichPath:animator:0.0.4'
+	compile 'com.github.tarek360.RichPath:animator:0.0.5'
 }
 ```
 
@@ -146,10 +146,6 @@ RichPathAnimator
         // start your animation 🎉
         .start();
 ```
-
-## TODO
-- Optimize the path morphing animation performance.
-- ...
 
 
 ## Credits

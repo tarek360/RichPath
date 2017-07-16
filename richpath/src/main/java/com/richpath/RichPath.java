@@ -11,7 +11,9 @@ import android.graphics.PathMeasure;
 
 import com.richpath.listener.OnRichPathUpdatedListener;
 import com.richpath.model.Group;
+import com.richpath.pathparser.PathDataNode;
 import com.richpath.pathparser.PathParser;
+import com.richpath.pathparser.PathParserCompat;
 import com.richpath.util.PathUtils;
 import com.richpath.util.XmlParser;
 
@@ -60,7 +62,7 @@ public class RichPath extends Path {
 
     private Path originalPath;
 
-    private String pathData;
+    private PathDataNode[] pathDataNodes;
     private List<Matrix> matrices;
 
     public RichPath(String pathData) {
@@ -377,14 +379,17 @@ public class RichPath extends Path {
         paint.setStrokeWidth(strokeWidth * scale);
     }
 
-
-    public String getPathData() {
-        return pathData;
+    public void setPathData(String pathData) {
+        setPathDataNodes(PathParserCompat.createNodesFromPathData(pathData));
     }
 
-    public void setPathData(String pathData) {
-        PathUtils.setPathData(this, pathData);
-        this.pathData = pathData;
+    public PathDataNode[] getPathDataNodes() {
+        return pathDataNodes;
+    }
+
+    public void setPathDataNodes(PathDataNode[] pathDataNodes) {
+        PathUtils.setPathDataNodes(this, pathDataNodes);
+        this.pathDataNodes = pathDataNodes;
 
         for (Matrix matrix : matrices) {
             transform(matrix);
@@ -395,7 +400,9 @@ public class RichPath extends Path {
 
     public void inflate(Context context, XmlResourceParser xpp) {
 
-        pathData = XmlParser.getAttributeString(context, xpp, "pathData", name);
+        String pathData = XmlParser.getAttributeString(context, xpp, "pathData", name);
+
+        pathDataNodes = PathParserCompat.createNodesFromPathData(pathData);
 
         name = XmlParser.getAttributeString(context, xpp, "name", name);
 
