@@ -3,18 +3,15 @@ package com.richpath;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Path;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
-import com.richpath.listener.OnRichPathUpdatedListener;
 import com.richpath.model.Vector;
 import com.richpath.pathparser.PathParser;
-import com.richpath.util.Utils;
 import com.richpath.util.XmlParser;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -25,11 +22,10 @@ import java.io.IOException;
  * Created by tarek on 6/29/17.
  */
 
-public class RichPathView extends View {
+public class RichPathView extends ImageView {
 
     private Vector vector;
-    private int width;
-    private int height;
+    private RichPathDrawable richPathDrawable;
 
     public RichPathView(Context context) {
         this(context, null);
@@ -79,9 +75,13 @@ public class RichPathView extends View {
         @SuppressWarnings("ResourceType")
         XmlResourceParser xpp = getContext().getResources().getXml(resId);
         vector = new Vector();
+
         try {
             XmlParser.parseVector(vector, xpp, getContext());
-            listenToUpdatingPath();
+
+            richPathDrawable = new RichPathDrawable(vector);
+            setImageDrawable(richPathDrawable);
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
@@ -91,108 +91,62 @@ public class RichPathView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         if (vector == null) return;
 
-        setMeasuredDimension((int) vector.getWidth(),
-                (int) vector.getHeight());
-    }
+        int desiredWidth = (int) vector.getWidth();
+        int desiredHeight = (int) vector.getHeight();
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0) {
-            width = w;
-            height = h;
-            mapPaths();
-        }
-    }
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
-    void mapPaths() {
-        if (vector == null) return;
 
-        float centerX = width / 2;
-        float centerY = height / 2;
-
-        Matrix matrix = new Matrix();
-
-        matrix.postTranslate(centerX - vector.getViewportWidth() / 2,
-                centerY - vector.getViewportHeight() / 2);
-
-        float widthRatio = width / vector.getViewportWidth();
-        float heightRatio = height / vector.getViewportHeight();
-
-        float ratio = Math.min(widthRatio, heightRatio);
-
-        matrix.postScale(ratio, ratio, centerX, centerY);
-
-        for (RichPath path : vector.paths) {
-            path.mapToMatrix(matrix);
-            path.scaleStrokeWidth(ratio);
+        //Measure Width
+        int width;
+        if (widthMode == MeasureSpec.EXACTLY) {
+            //Must be this size
+            width = widthSize;
+        } else if (widthMode == MeasureSpec.AT_MOST) {
+            //Can't be bigger than...
+            width = Math.min(desiredWidth, widthSize);
+        } else {
+            //Be whatever you want
+            width = desiredWidth;
         }
 
+        //Measure Height
+        int height;
+        if (heightMode == MeasureSpec.EXACTLY) {
+            //Must be this size
+            height = heightSize;
+        } else if (heightMode == MeasureSpec.AT_MOST) {
+            //Can't be bigger than...
+            height = Math.min(desiredHeight, heightSize);
+        } else {
+            //Be whatever you want
+            height = desiredHeight;
+        }
+
+        //MUST CALL THIS
+        setMeasuredDimension(width, height);
     }
 
     @Nullable
     public RichPath findRichPathByName(String name) {
-        if (vector == null) return null;
-
-        for (RichPath path : vector.paths) {
-            if (name.equals(path.getName())) {
-                return path;
-            }
-        }
-        return null;
-    }
-
-    public void listenToUpdatingPath() {
-        if (vector == null) return;
-
-        for (RichPath path : vector.paths) {
-            path.setOnRichPathUpdatedListener(new OnRichPathUpdatedListener() {
-                @Override
-                public void onPathUpdated() {
-                    invalidate();
-                }
-            });
-        }
-
+        return richPathDrawable == null ? null : richPathDrawable.findRichPathByName(name);
     }
 
     public void addPath(String path) {
-        addPath(PathParser.createPathFromPathData(path));
-    }
-
-    public void addPath(Path path) {
-        if (path instanceof RichPath) {
-            addPath((RichPath) path);
-        } else {
-            addPath(new RichPath(path));
+        if (richPathDrawable != null) {
+            richPathDrawable.addPath(PathParser.createPathFromPathData(path));
         }
     }
 
-    private void addPath(RichPath path) {
-
-        if (vector == null) return;
-        vector.paths.add(path);
-        path.setOnRichPathUpdatedListener(new OnRichPathUpdatedListener() {
-            @Override
-            public void onPathUpdated() {
-                invalidate();
-            }
-        });
-        invalidate();
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        if (vector == null || vector.paths.size() < 0) return;
-
-        for (RichPath path : vector.paths) {
-            path.draw(canvas);
+    public void addPath(Path path) {
+        if (richPathDrawable != null) {
+            richPathDrawable.addPath(path);
         }
     }
 
