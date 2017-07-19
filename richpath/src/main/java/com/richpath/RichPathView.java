@@ -95,8 +95,8 @@ public class RichPathView extends View {
 
         if (vector == null) return;
 
-        setMeasuredDimension((int) Utils.dpToPixel(getContext(), vector.getWidth()),
-                (int) Utils.dpToPixel(getContext(), vector.getHeight()));
+        setMeasuredDimension((int) vector.getWidth(),
+                (int) vector.getHeight());
     }
 
     @Override
