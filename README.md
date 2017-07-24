@@ -113,7 +113,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.tarek360.RichPath:animator:0.0.7'
+	compile 'com.github.tarek360.RichPath:animator:0.0.8'
 }
 ```
 

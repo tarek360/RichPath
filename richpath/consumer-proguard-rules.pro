@@ -1,0 +1,3 @@
+-keep class com.richpath.RichPath { *; }
+-keep class com.richpath.pathparser.PathDataNode { *; }
+-keep class com.richpath.pathparser.PathParserCompat { *; }
