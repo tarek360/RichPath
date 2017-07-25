@@ -77,6 +77,24 @@ class RichPathDrawable extends Drawable {
         return null;
     }
 
+    /**
+     * find the first {@link RichPath} or null if not found
+     * <p>
+     * This can be in handy if the vector consists of 1 path only
+     *
+     * @return the {@link RichPath} object found or null
+     */
+    @Nullable
+    public RichPath findFirstRichPath() {
+        return findRichPathByIndex(0);
+    }
+
+    @Nullable
+    public RichPath findRichPathByIndex(@IntRange(from = 0) int index) {
+        if (vector == null || index < 0 || index >= vector.paths.size()) return null;
+        return vector.paths.get(index);
+    }
+
     public void listenToPathsUpdates() {
 
         if (vector == null) return;

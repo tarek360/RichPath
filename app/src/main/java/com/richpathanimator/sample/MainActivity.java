@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private RichPathView playlistAddCheckRichPathView;
     private RichPathView loveFaceRichPathView;
     private RichPathView animalRichPathView;
+    private boolean reverse = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         String elephantPathData = getString(R.string.elephant_path);
         String bullPathData = getString(R.string.bull_path);
 
-        final RichPath richPath = animalRichPathView.findRichPathByName("path");
+        final RichPath richPath = animalRichPathView.findFirstRichPath();
 
         RichPathAnimator
                 .animate(richPath)
@@ -147,8 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
                 .start();
     }
-
-    private boolean reverse = false;
 
     public void animateArrowToSearch(View view) {
 
@@ -181,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void animateNotification(View view) {
 
-        final RichPath top = notificationsRichPathView.findRichPathByName("top");
-        final RichPath bottom = notificationsRichPathView.findRichPathByName("bottom");
+        final RichPath top = notificationsRichPathView.findRichPathByIndex(0);
+        final RichPath bottom = notificationsRichPathView.findRichPathByIndex(1);
 
         RichPathAnimator.animate(top)
                 .interpolator(new DecelerateInterpolator())
