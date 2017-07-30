@@ -150,6 +150,7 @@ RichPathAnimator
 
 ## TODO
 
+- Clickable path
 - Support clip-path
 - Path animation (animate a RichPath on a path)
 - Reverse animation
