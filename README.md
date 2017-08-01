@@ -37,8 +37,12 @@ RichPathAnimator.animate(richPath)
 
 #### 2. Find your richPath.
  ```java
+ // by path name
 RichPath richPath = richPathView.findRichPathByName("path_name");
-
+// or if it contains one path
+RichPath richPath = richPathView.findFirstRichPath();
+// or by index
+RichPath richPath = richPathView.findRichPathByIndex(0);
 ```
 
 #### 3. Use the RichPathAnimator to animate your richPath.

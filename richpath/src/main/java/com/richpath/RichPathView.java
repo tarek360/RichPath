@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Path;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.IntRange;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -133,9 +134,50 @@ public class RichPathView extends ImageView {
         setMeasuredDimension(width, height);
     }
 
+
     @Nullable
     public RichPath findRichPathByName(String name) {
         return richPathDrawable == null ? null : richPathDrawable.findRichPathByName(name);
+    }
+
+    /**
+     * find the first {@link RichPath} or null if not found
+     * <p>
+     * This can be in handy if the vector consists of 1 path only
+     *
+     * @return the {@link RichPath} object found or null
+     */
+    @Nullable
+    public RichPath findFirstRichPath() {
+        return richPathDrawable == null ? null : richPathDrawable.findFirstRichPath();
+    }
+
+    /**
+     * find {@link RichPath} by its index or null if not found
+     * <p>
+     * Note that the provided index must be the flattened index of the path
+     * <p>
+     * example:
+     * <pre>
+     * {@code <vector>
+     *     <path> // index = 0
+     *     <path> // index = 1
+     *     <group>
+     *          <path> // index = 2
+     *          <group>
+     *              <path> // index = 3
+     *          </group>
+     *      </group>
+     *      <path> // index = 4
+     *   </vector>}
+     * </pre>
+     *
+     * @param index the flattened index of the path
+     * @return the {@link RichPath} object found or null
+     */
+    @Nullable
+    public RichPath findRichPathByIndex(@IntRange(from = 0) int index) {
+        return richPathDrawable == null ? null : richPathDrawable.findRichPathByIndex(index);
     }
 
     public void addPath(String path) {
