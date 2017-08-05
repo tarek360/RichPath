@@ -122,7 +122,7 @@ public class AnimationBuilder {
     public AnimationBuilder interpolator(Interpolator interpolator) {
         this.interpolator = interpolator;
         for (ValueAnimator animator : animators) {
-            animator.setDuration(duration);
+            animator.setInterpolator(interpolator);
         }
         return this;
     }
