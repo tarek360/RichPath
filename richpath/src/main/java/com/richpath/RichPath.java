@@ -65,6 +65,8 @@ public class RichPath extends Path {
     private PathDataNode[] pathDataNodes;
     private List<Matrix> matrices;
 
+    private OnPathClickListener onPathClickListener;
+
     public RichPath(String pathData) {
         this(PathParser.createPathFromPathData(pathData));
     }
@@ -490,5 +492,17 @@ public class RichPath extends Path {
         color &= 0x00FFFFFF;
         color |= ((int) (alphaBytes * alpha)) << 24;
         return color;
+    }
+
+    public void setOnPathClickListener(OnPathClickListener onPathClickListener) {
+        this.onPathClickListener = onPathClickListener;
+    }
+
+    public OnPathClickListener getOnPathClickListener() {
+        return onPathClickListener;
+    }
+
+    public interface OnPathClickListener {
+        void onClick();
     }
 }

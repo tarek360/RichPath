@@ -3,9 +3,9 @@ package com.richpath.util;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Region;
 
 import com.richpath.pathparser.PathDataNode;
-import com.richpath.pathparser.PathParser;
 
 /**
  * Created by tarek on 6/29/17.
@@ -107,4 +107,19 @@ public class PathUtils {
         path.reset();
         PathDataNode.nodesToPath(pathDataNodes, path);
     }
+
+    public static boolean isTouched(Path path, float x, float y) {
+        Region region = new Region();
+        RectF rectF = new RectF();
+        path.computeBounds(rectF, true);
+        region.setPath(path,
+                new Region((int) rectF.left, (int) rectF.top, (int) rectF.right, (int) rectF.bottom));
+        int offset = 10;
+        return region.contains((int) x, (int) y)
+                || region.contains((int) x + offset, (int) y + offset)
+                || region.contains((int) x + offset, (int) y - offset)
+                || region.contains((int) x - offset, (int) y - offset)
+                || region.contains((int) x - offset, (int) y + offset);
+    }
+
 }

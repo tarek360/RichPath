@@ -8,11 +8,15 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
 
 import com.richpath.listener.OnRichPathUpdatedListener;
 import com.richpath.model.Vector;
 import com.richpath.pathparser.PathParser;
+import com.richpath.util.PathUtils;
 
 /**
  * Created by tarek on 6/29/17.
@@ -160,8 +164,33 @@ class RichPathDrawable extends Drawable {
         invalidateSelf();
     }
 
+    boolean onTouchEvent(MotionEvent event) {
+
+        if (vector == null) return false;
+
+        int action = MotionEventCompat.getActionMasked(event);
+
+        switch (action) {
+            case MotionEvent.ACTION_UP:
+
+                for (int i = vector.paths.size() - 1; i >= 0; i--) {
+                    RichPath richPath = vector.paths.get(i);
+                    RichPath.OnPathClickListener onPathClickListener = richPath.getOnPathClickListener();
+                    if (onPathClickListener != null) {
+                        if (PathUtils.isTouched(richPath, event.getX(), event.getY())) {
+                            onPathClickListener.onClick();
+                            return true;
+                        }
+                    }
+                }
+                break;
+        }
+
+        return true;
+    }
+
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
 
         if (vector == null || vector.paths.size() < 0) return;
 

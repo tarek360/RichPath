@@ -7,7 +7,9 @@ import android.graphics.Path;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntRange;
 import android.support.annotation.Nullable;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -192,4 +194,14 @@ public class RichPathView extends ImageView {
         }
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = MotionEventCompat.getActionMasked(event);
+        switch (action) {
+            case MotionEvent.ACTION_UP:
+                performClick();
+                break;
+        }
+        return richPathDrawable.onTouchEvent(event);
+    }
 }

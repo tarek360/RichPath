@@ -117,7 +117,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.tarek360.RichPath:animator:0.0.8'
+	compile 'com.github.tarek360.RichPath:animator:0.0.9'
 }
 ```
 
@@ -154,7 +154,7 @@ RichPathAnimator
 
 ## TODO
 
-- Clickable path
+- ~Clickable path~ (Done)
 - Support clip-path
 - Path animation (animate a RichPath on a path)
 - Reverse animation
