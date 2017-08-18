@@ -29,6 +29,8 @@ public class Vector {
 
     private float viewportWidth;
     private float viewportHeight;
+    private float currentWidth;
+    private float currentHeight;
 
     public List<RichPath> paths = new ArrayList<>();
 
@@ -56,6 +58,22 @@ public class Vector {
         return width;
     }
 
+    public float getCurrentWidth() {
+        return currentWidth;
+    }
+
+    public void setCurrentWidth(float currentWidth) {
+        this.currentWidth = currentWidth;
+    }
+
+    public float getCurrentHeight() {
+        return currentHeight;
+    }
+
+    public void setCurrentHeight(float currentHeight) {
+        this.currentHeight = currentHeight;
+    }
+
     public void inflate(XmlResourceParser xpp, Context context) {
 
         name = XmlParser.getAttributeString(context, xpp, "name", name);
@@ -73,6 +91,10 @@ public class Vector {
         viewportWidth = XmlParser.getAttributeFloat(xpp, "viewportWidth", viewportWidth);
 
         viewportHeight = XmlParser.getAttributeFloat(xpp, "viewportHeight", viewportHeight);
+
+        currentWidth = viewportWidth;
+
+        currentHeight = viewportHeight;
 
         //TODO tintMode = XmlParser.getAttributeFloat(xpp, "tintMode", tintMode);
 

@@ -52,20 +52,26 @@ class RichPathDrawable extends Drawable {
 
         Matrix matrix = new Matrix();
 
-        matrix.postTranslate(centerX - vector.getViewportWidth() / 2,
-                centerY - vector.getViewportHeight() / 2);
+        matrix.postTranslate(centerX - vector.getCurrentWidth() / 2,
+                centerY - vector.getCurrentHeight() / 2);
 
-        float widthRatio = width / vector.getViewportWidth();
-        float heightRatio = height / vector.getViewportHeight();
-
+        float widthRatio = width / vector.getCurrentWidth();
+        float heightRatio = height / vector.getCurrentHeight();
         float ratio = Math.min(widthRatio, heightRatio);
 
         matrix.postScale(ratio, ratio, centerX, centerY);
 
+        float absWidthRatio = width / vector.getViewportWidth();
+        float absHeightRatio = height / vector.getViewportHeight();
+        float absRatio = Math.min(absWidthRatio, absHeightRatio);
+
         for (RichPath path : vector.paths) {
             path.mapToMatrix(matrix);
-            path.scaleStrokeWidth(ratio);
+            path.scaleStrokeWidth(absRatio);
         }
+
+        vector.setCurrentWidth(width);
+        vector.setCurrentHeight(height);
 
     }
 
