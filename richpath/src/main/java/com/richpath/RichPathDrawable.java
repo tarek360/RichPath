@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
+import android.widget.ImageView.ScaleType;
 
 import com.richpath.listener.OnRichPathUpdatedListener;
 import com.richpath.model.Vector;
@@ -27,10 +28,13 @@ class RichPathDrawable extends Drawable {
     private Vector vector;
     private int width;
     private int height;
+    private ScaleType scaleType;
 
-    public RichPathDrawable(Vector vector) {
+    public RichPathDrawable(Vector vector, ScaleType scaleType) {
         this.vector = vector;
+        this.scaleType = scaleType;
         listenToPathsUpdates();
+
     }
 
     @Override
@@ -57,9 +61,19 @@ class RichPathDrawable extends Drawable {
 
         float widthRatio = width / vector.getCurrentWidth();
         float heightRatio = height / vector.getCurrentHeight();
-        float ratio = Math.min(widthRatio, heightRatio);
 
-        matrix.postScale(ratio, ratio, centerX, centerY);
+
+        if (scaleType == ScaleType.FIT_XY) {
+            matrix.postScale(widthRatio, heightRatio, centerX, centerY);
+        } else {
+            float ratio;
+            if (width < height) {
+                ratio = widthRatio;
+            } else {
+                ratio = heightRatio;
+            }
+            matrix.postScale(ratio, ratio, centerX, centerY);
+        }
 
         float absWidthRatio = width / vector.getViewportWidth();
         float absHeightRatio = height / vector.getViewportHeight();
@@ -181,7 +195,8 @@ class RichPathDrawable extends Drawable {
 
                 for (int i = vector.paths.size() - 1; i >= 0; i--) {
                     RichPath richPath = vector.paths.get(i);
-                    RichPath.OnPathClickListener onPathClickListener = richPath.getOnPathClickListener();
+                    RichPath.OnPathClickListener onPathClickListener = richPath
+                            .getOnPathClickListener();
                     if (onPathClickListener != null) {
                         if (PathUtils.isTouched(richPath, event.getX(), event.getY())) {
                             onPathClickListener.onClick();

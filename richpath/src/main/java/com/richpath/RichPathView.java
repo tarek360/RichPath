@@ -82,7 +82,7 @@ public class RichPathView extends ImageView {
         try {
             XmlParser.parseVector(vector, xpp, getContext());
 
-            richPathDrawable = new RichPathDrawable(vector);
+            richPathDrawable = new RichPathDrawable(vector, getScaleType());
             setImageDrawable(richPathDrawable);
 
         } catch (IOException e) {
