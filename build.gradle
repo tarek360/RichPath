@@ -24,12 +24,12 @@ allprojects {
 }
 
 ext {
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.3'
-    minSdkVersion = 11
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.1'
+    minSdkVersion = 14
     targetSdkVersion = 25
 
-    supportLibraryVersion = '25.3.1'
+    supportLibraryVersion = '26.1.0'
     espressoVersion = '2.2.2'
     junitVersion = '4.12'
 }
