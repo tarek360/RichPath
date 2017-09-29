@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        commandRichPathView = (RichPathView) findViewById(R.id.ic_command);
-        androidRichPathView = (RichPathView) findViewById(R.id.ic_android);
-        arrowSearchRichPathView = (RichPathView) findViewById(R.id.ic_arrow_search);
-        notificationsRichPathView = (RichPathView) findViewById(R.id.ic_notifications);
-        playlistAddCheckRichPathView = (RichPathView) findViewById(R.id.ic_playlist_add_check);
-        loveFaceRichPathView = (RichPathView) findViewById(R.id.love_face);
-        animalRichPathView = (RichPathView) findViewById(R.id.animal);
+        commandRichPathView = findViewById(R.id.ic_command);
+        androidRichPathView = findViewById(R.id.ic_android);
+        arrowSearchRichPathView = findViewById(R.id.ic_arrow_search);
+        notificationsRichPathView = findViewById(R.id.ic_notifications);
+        playlistAddCheckRichPathView = findViewById(R.id.ic_playlist_add_check);
+        loveFaceRichPathView = findViewById(R.id.love_face);
+        animalRichPathView = findViewById(R.id.animal);
 
         animateCommand();
     }
