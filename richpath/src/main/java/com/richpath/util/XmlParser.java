@@ -2,7 +2,6 @@ package com.richpath.util;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
@@ -131,7 +130,7 @@ public class XmlParser {
         }
 
         String value = getAttributeValue(xpp, attributeName);
-        return value != null ? Color.parseColor(value) : defValue;
+        return value != null ? Utils.getColorFromString(value) : defValue;
     }
 
 
