@@ -1,84 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context="com.richpathanimator.sample.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_name"
+        android:textSize="44sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Tap any shape to animate it!"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-10dp"
+        android:text="@string/animator"
+        android:textColor="#888888"
+        android:textSize="20sp" />
 
-        <com.richpath.RichPathView
-            android:id="@+id/ic_command"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:padding="8dp"
-            app:vector="@drawable/ic_command" />
+    <com.richpath.RichPathView
+        android:id="@+id/ic_android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subtitle"
+        android:layout_centerHorizontal="true"
+        android:onClick="animateAndroid"
+        app:vector="@drawable/ic_android" />
 
-        <com.richpath.RichPathView
-            android:id="@+id/ic_android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:onClick="animateAndroid"
-            app:vector="@drawable/ic_android" />
+    <Button
+        android:id="@+id/animationSamplesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ic_android"
+        android:layout_centerHorizontal="true"
+        android:onClick="openAnimationSamples"
+        android:text="@string/animation_samples" />
 
-        <com.richpath.RichPathView
-            android:id="@+id/animal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:padding="6dp"
-            android:onClick="animateAnimal"
-            app:vector="@drawable/animal"/>
+    <Button
+        android:id="@+id/compoundViewSamplesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animationSamplesButton"
+        android:layout_centerHorizontal="true"
+        android:onClick="openCompoundViewSamples"
+        android:text="@string/compound_view_samples" />
 
-        <com.richpath.RichPathView
-            android:id="@+id/ic_arrow_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:padding="4dp"
-            android:onClick="animateArrowToSearch"
-            app:vector="@drawable/ic_arrow_search" />
-
-        <com.richpath.RichPathView
-            android:id="@+id/ic_notifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:onClick="animateNotification"
-            app:vector="@drawable/ic_notifications" />
-
-        <com.richpath.RichPathView
-            android:id="@+id/ic_playlist_add_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:padding="8dp"
-            android:onClick="animatePlaylistAddCheck"
-            app:vector="@drawable/ic_playlist_add_check"/>
-
-        <com.richpath.RichPathView
-            android:id="@+id/love_face"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:padding="8dp"
-            android:onClick="animateLoveFace"
-            app:vector="@drawable/face_love" />
-
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>

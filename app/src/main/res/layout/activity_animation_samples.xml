@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.richpathanimator.sample.AnimationSamplesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Tap any shape to animate it!"
+            android:textSize="18sp" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <com.richpath.RichPathView
+                android:id="@+id/ic_command"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/love_face"
+                app:layout_constraintStart_toStartOf="parent"
+                app:vector="@drawable/ic_command" />
+
+            <com.richpath.RichPathView
+                android:id="@+id/love_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:onClick="animateLoveFace"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ic_command"
+                app:vector="@drawable/face_love" />
+
+            <com.richpath.RichPathView
+                android:id="@+id/animal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:onClick="animateAnimal"
+                android:padding="6dp"
+                app:layout_constraintEnd_toStartOf="@+id/love_face"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ic_command"
+                app:vector="@drawable/animal" />
+
+            <com.richpath.RichPathView
+                android:id="@+id/ic_arrow_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:onClick="animateArrowToSearch"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ic_command"
+                app:layout_constraintTop_toBottomOf="@+id/ic_command"
+                app:vector="@drawable/ic_arrow_search" />
+
+            <com.richpath.RichPathView
+                android:id="@+id/ic_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:onClick="animateNotification"
+                app:layout_constraintEnd_toStartOf="@+id/love_face"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animal"
+                app:vector="@drawable/ic_notifications" />
+
+            <com.richpath.RichPathView
+                android:id="@+id/ic_playlist_add_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:onClick="animatePlaylistAddCheck"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ic_command"
+                app:layout_constraintTop_toBottomOf="@+id/ic_arrow_search"
+                app:vector="@drawable/ic_playlist_add_check" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

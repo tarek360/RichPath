@@ -1,7 +1,7 @@
 <img src="/screenshots/header.gif" width="400">
 <img src="/screenshots/samples.gif" align="right" width="120">
 
-[![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) ![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
+[![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) ![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
 
 💪 Rich Android Path.     🤡 Draw as you want.    🎉 Animate much as you can.
 
@@ -15,7 +15,7 @@ Animate any attribute in a specific path in the VectorDrawable
 
 `fillColor`, `strokeColor`, `strokeAlpha`, `fillAlpha`, `size`, `width`, `height`, `scale`, `scaleX`, `scaleY`, `rotation`, `translationX`, `translationY`, `trimPathStart`, `trimPathEnd`, `trimPathOffset`.
 
-- **Path morphing on API +11 :** 💪
+- **Path morphing:**
 
 <img src="/screenshots/animal_path_morphing.gif" width="250">
 
@@ -117,7 +117,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.tarek360.RichPath:animator:0.0.9'
+	implementation 'com.github.tarek360.RichPath:animator:0.1.0'
 }
 ```
 
@@ -151,6 +151,17 @@ RichPathAnimator
         .start();
 ```
 
+ - **Which one of the paths is clicked?**
+ ```java
+richPathView.setOnPathClickListener(new RichPath.OnPathClickListener() {
+     @Override
+     public void onClick(RichPath richPath) {
+	    if (richPath.getName().equals("path_name")) {
+	        //TODO do an action when a specific path is clicked.
+	    }
+     }
+ });
+```
 
 ## TODO
 
