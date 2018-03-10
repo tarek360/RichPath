@@ -151,6 +151,17 @@ RichPathAnimator
         .start();
 ```
 
+ - **Which one of the paths is clicked?**
+ ```java
+richPathView.setOnPathClickListener(new RichPath.OnPathClickListener() {
+     @Override
+     public void onClick(RichPath richPath) {
+	    if (richPath.getName().equals("path_name")) {
+	        //TODO do an action when a specific path is clicked.
+	    }
+     }
+ });
+```
 
 ## TODO
 

@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.richpathanimator.sample.AnimationSamplesActivity" />
+        <activity android:name="com.richpathanimator.sample.CompoundViewSamplesActivity" />
     </application>
 
 </manifest>

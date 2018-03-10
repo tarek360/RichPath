@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.widget.ImageView.ScaleType;
 
@@ -184,30 +183,23 @@ class RichPathDrawable extends Drawable {
         invalidateSelf();
     }
 
-    boolean onTouchEvent(MotionEvent event) {
+    @Nullable
+    RichPath getTouchedPath(MotionEvent event) {
 
-        if (vector == null) return false;
+        if (vector == null) return null;
 
-        int action = MotionEventCompat.getActionMasked(event);
+        int action = event.getAction();
 
-        switch (action) {
-            case MotionEvent.ACTION_UP:
-
-                for (int i = vector.paths.size() - 1; i >= 0; i--) {
-                    RichPath richPath = vector.paths.get(i);
-                    RichPath.OnPathClickListener onPathClickListener = richPath
-                            .getOnPathClickListener();
-                    if (onPathClickListener != null) {
-                        if (PathUtils.isTouched(richPath, event.getX(), event.getY())) {
-                            onPathClickListener.onClick();
-                            return true;
-                        }
-                    }
+        if (action == MotionEvent.ACTION_UP) {
+            for (int i = vector.paths.size() - 1; i >= 0; i--) {
+                RichPath richPath = vector.paths.get(i);
+                if (PathUtils.isTouched(richPath, event.getX(), event.getY())) {
+                    return richPath;
                 }
-                break;
+            }
         }
 
-        return true;
+        return null;
     }
 
     @Override

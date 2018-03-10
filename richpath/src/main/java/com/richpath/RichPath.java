@@ -498,11 +498,11 @@ public class RichPath extends Path {
         this.onPathClickListener = onPathClickListener;
     }
 
-    public OnPathClickListener getOnPathClickListener() {
+    OnPathClickListener getOnPathClickListener() {
         return onPathClickListener;
     }
 
     public interface OnPathClickListener {
-        void onClick();
+        void onClick(RichPath richPath);
     }
 }

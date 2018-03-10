@@ -29,6 +29,7 @@ public class RichPathView extends ImageView {
 
     private Vector vector;
     private RichPathDrawable richPathDrawable;
+    private RichPath.OnPathClickListener onPathClickListener;
 
     public RichPathView(Context context) {
         this(context, null);
@@ -196,12 +197,29 @@ public class RichPathView extends ImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int action = MotionEventCompat.getActionMasked(event);
+        int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_UP:
                 performClick();
                 break;
         }
-        return richPathDrawable.onTouchEvent(event);
+
+        RichPath richPath = richPathDrawable.getTouchedPath(event);
+
+        if (richPath != null) {
+            RichPath.OnPathClickListener onPathClickListener = richPath.getOnPathClickListener();
+            if (onPathClickListener != null) {
+                onPathClickListener.onClick(richPath);
+            }
+            if (this.onPathClickListener != null) {
+                this.onPathClickListener.onClick(richPath);
+            }
+        }
+
+        return true;
+    }
+
+    public void setOnPathClickListener(RichPath.OnPathClickListener onPathClickListener) {
+        this.onPathClickListener = onPathClickListener;
     }
 }
