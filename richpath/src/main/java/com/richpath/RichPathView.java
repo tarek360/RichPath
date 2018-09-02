@@ -6,8 +6,8 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Path;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -137,6 +137,11 @@ public class RichPathView extends ImageView {
         setMeasuredDimension(width, height);
     }
 
+
+    @NonNull
+    public RichPath[] findAllRichPaths() {
+        return richPathDrawable == null ? new RichPath[0] : richPathDrawable.findAllRichPaths();
+    }
 
     @Nullable
     public RichPath findRichPathByName(String name) {
