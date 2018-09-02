@@ -1,6 +1,7 @@
 <img src="/screenshots/header.gif" width="400">
 <img src="/screenshots/samples.gif" align="right" width="120">
 
+[![CircleCI](https://circleci.com/gh/tarek360/RichPath.svg?style=svg)](https://circleci.com/gh/tarek360/RichPath)
 [![Release](https://jitpack.io/v/tarek360/RichPath.svg)](https://jitpack.io/#tarek360/RichPath) ![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/tarek360/RichPath)
 
 💪 Rich Android Path.     🤡 Draw as you want.    🎉 Animate much as you can.
