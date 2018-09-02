@@ -7,7 +7,9 @@
 💪 Rich Android Path.     🤡 Draw as you want.    🎉 Animate much as you can.
 
 ### Download sample app:
-[![](http://s25.postimg.org/l7tmfhxy7/get_it_on_google_play.jpg)](https://play.google.com/store/apps/details?id=com.pathanimator.sample)
+<a href="https://play.google.com/store/apps/details?id=com.pathanimator.sample">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="220">
+</a>
 
 ### Features
 
@@ -80,7 +82,6 @@ RichPathAnimator.animate(richPath)
             android:pathData="M16,25.8c1.1,0,2-0.9,2-2h-4C14,24.9,14.9,25.8,16,25.8z" />
     </group>
 </vector>
-</vector>
 ```
 
 #### XML
@@ -118,7 +119,7 @@ Add the following dependency to your module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	implementation 'com.github.tarek360.RichPath:animator:0.1.0'
+	implementation 'com.github.tarek360.RichPath:animator:0.1.1'
 }
 ```
 
