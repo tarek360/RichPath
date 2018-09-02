@@ -34,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
         RichPathView androidRichPathView = findViewById(R.id.ic_android);
 
+        final RichPath[] allPaths = androidRichPathView.findAllRichPaths();
         final RichPath head = androidRichPathView.findRichPathByName("head");
         final RichPath body = androidRichPathView.findRichPathByName("body");
-        final RichPath rEye = androidRichPathView.findRichPathByName("r_eye");
-        final RichPath lEye = androidRichPathView.findRichPathByName("l_eye");
         final RichPath rHand = androidRichPathView.findRichPathByName("r_hand");
         final RichPath lHand = androidRichPathView.findRichPathByName("l_hand");
 
-        RichPathAnimator.animate(head, rEye, lEye, body, rHand, lHand)
+        RichPathAnimator.animate(allPaths)
                 .trimPathEnd(0, 1)
                 .duration(800)
                 .animationListener(new AnimationListener() {
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onStop() {
                     }
                 })
-                .thenAnimate(head, rEye, lEye, body, rHand, lHand)
+                .thenAnimate(allPaths)
                 .fillColor(Color.TRANSPARENT, 0xFFa4c639)
                 .interpolator(new AccelerateInterpolator())
                 .duration(900)

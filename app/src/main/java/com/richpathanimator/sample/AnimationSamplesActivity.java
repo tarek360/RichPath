@@ -83,48 +83,6 @@ public class AnimationSamplesActivity extends AppCompatActivity {
                 .start();
     }
 
-    public void animateAndroid(View view) {
-
-        final RichPath head = androidRichPathView.findRichPathByName("head");
-        final RichPath body = androidRichPathView.findRichPathByName("body");
-        final RichPath rEye = androidRichPathView.findRichPathByName("r_eye");
-        final RichPath lEye = androidRichPathView.findRichPathByName("l_eye");
-        final RichPath rHand = androidRichPathView.findRichPathByName("r_hand");
-        final RichPath lHand = androidRichPathView.findRichPathByName("l_hand");
-
-        RichPathAnimator.animate(head, rEye, lEye, body, rHand, lHand)
-                .trimPathEnd(0, 1)
-                .duration(800)
-                .animationListener(new AnimationListener() {
-                    @Override
-                    public void onStart() {
-                        head.setFillColor(Color.TRANSPARENT);
-                        body.setFillColor(Color.TRANSPARENT);
-                        rHand.setFillColor(Color.TRANSPARENT);
-                        lHand.setFillColor(Color.TRANSPARENT);
-                        rHand.setRotation(0);
-                    }
-
-                    @Override
-                    public void onStop() {
-                    }
-                })
-                .thenAnimate(head, rEye, lEye, body, rHand, lHand)
-                .fillColor(Color.TRANSPARENT, 0xFFa4c639)
-                .interpolator(new AccelerateInterpolator())
-                .duration(900)
-                .thenAnimate(rHand)
-                .rotation(-150)
-                .duration(700)
-                .thenAnimate(rHand)
-                .rotation(-150, -130, -150, -130, -150, -130, -150)
-                .duration(2000)
-                .thenAnimate(rHand)
-                .rotation(0)
-                .duration(500)
-                .start();
-    }
-
     public void animateAnimal(View view) {
 
         String hippoPathData = getString(R.string.hippo_path);
