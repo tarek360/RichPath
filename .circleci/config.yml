@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/android:api-27-alpha
+
+    working_directory: ~/richpath
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+      CIRCLE_JDK_VERSION: oraclejdk8
+      GRADLE_OPTS: -Dorg.gradle.daemon=false
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+
+      - run:
+          name: Accept licenses
+          command: yes | sdkmanager --licenses || true
+
+      - run:
+          name: Build
+          command: ./gradlew test --stacktrace
