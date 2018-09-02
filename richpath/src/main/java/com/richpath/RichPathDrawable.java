@@ -88,6 +88,15 @@ class RichPathDrawable extends Drawable {
 
     }
 
+    @NonNull
+    public RichPath[] findAllRichPaths() {
+        if (vector == null) {
+            return new RichPath[0];
+        }
+        RichPath[] richPathArr = new RichPath[vector.paths.size()];
+        return vector.paths.toArray(richPathArr);
+    }
+
     @Nullable
     public RichPath findRichPathByName(String name) {
         if (vector == null) return null;
