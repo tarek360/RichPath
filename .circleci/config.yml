@@ -24,3 +24,7 @@ jobs:
       - run:
           name: Build
           command: ./gradlew test --stacktrace
+
+      - run:
+          name: Koshry
+          command: ./gradlew koshry
