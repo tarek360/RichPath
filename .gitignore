@@ -1,7 +1,7 @@
 *.iml
 *.apk
 .gradle
-/local.properties
+local.properties
 .idea/
 git
 .DS_Store
