@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.tarek360'
 
@@ -21,6 +23,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { java.srcDirs = ['src/main/java', 'src/main/kotlin'] } }
 }
 
 dependencies {
@@ -31,4 +34,5 @@ dependencies {
     testCompile "junit:junit:$junitVersion"
 
     compile project(path: ':richpath')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
