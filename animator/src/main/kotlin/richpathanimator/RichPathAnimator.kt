@@ -29,17 +29,16 @@ class RichPathAnimator {
 
     companion object {
         const val INFINITE = -1
+        @JvmStatic fun animate(vararg paths: RichPath): AnimationBuilder {
+            val viewAnimator = RichPathAnimator()
+            return viewAnimator.addAnimationBuilder(*paths)
+        }
     }
 
     internal fun addAnimationBuilder(vararg paths: RichPath): AnimationBuilder {
         val animationBuilder = AnimationBuilder(this, *paths)
         animationBuilders.add(animationBuilder)
         return animationBuilder
-    }
-
-    fun animate(vararg paths: RichPath): AnimationBuilder {
-        val viewAnimator = RichPathAnimator()
-        return viewAnimator.addAnimationBuilder(*paths)
     }
 
     internal fun thenAnimate(vararg paths: RichPath): AnimationBuilder {

@@ -9,8 +9,8 @@ import android.view.animation.AccelerateInterpolator;
 
 import com.richpath.RichPath;
 import com.richpath.RichPathView;
-import com.richpathanimator.AnimationListener;
-import com.richpathanimator.RichPathAnimator;
+import richpathanimator.AnimationListener;
+import richpathanimator.RichPathAnimator;
 
 public class MainActivity extends AppCompatActivity {
 
