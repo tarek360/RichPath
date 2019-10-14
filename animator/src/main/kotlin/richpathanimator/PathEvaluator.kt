@@ -8,10 +8,9 @@ class PathEvaluator: TypeEvaluator<Array<PathDataNode>> {
     private var evaluatedNodes: Array<PathDataNode>? = null
 
     override fun evaluate(fraction: Float, startPathDataNodes: Array<PathDataNode>?, endPathDataNodes: Array<PathDataNode>?): Array<PathDataNode> {
-        if (evaluatedNodes == null) {
-            evaluatedNodes = PathParserCompat.deepCopyNodes(startPathDataNodes)
-        }
-        if (startPathDataNodes == null || endPathDataNodes == null) return evaluatedNodes!!
+        val evaluatedNodes = this.evaluatedNodes?.let { it } ?: PathParserCompat.deepCopyNodes(startPathDataNodes)
+        this.evaluatedNodes = evaluatedNodes
+        if (startPathDataNodes == null || endPathDataNodes == null) return evaluatedNodes
 
         val startNodeSize = startPathDataNodes.size
         for (i in 0 until startNodeSize) {
@@ -19,9 +18,9 @@ class PathEvaluator: TypeEvaluator<Array<PathDataNode>> {
             for (j in 0 until nodeParamSize) {
                 val startFloat = startPathDataNodes[i].params[j]
                 val value = startFloat + fraction * (endPathDataNodes[i].params[j] - startFloat)
-                evaluatedNodes!![i].params[j] = value
+                evaluatedNodes[i].params[j] = value
             }
         }
-        return evaluatedNodes!!
+        return evaluatedNodes
     }
 }
