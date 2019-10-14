@@ -49,13 +49,13 @@ class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
      */
     fun custom(listener: AnimationUpdateListener?, vararg values: Float) = apply {
         for (path in paths) {
-            val valueAnimator = ValueAnimator.ofFloat(*values).apply {
+            ValueAnimator.ofFloat(*values).apply {
                 addUpdateListener { animation ->
                     listener?.update(path, animation.animatedValue as Float)
                     path.onRichPathUpdatedListener?.onPathUpdated()
                 }
+                applyAnimatorProperties(this, path)
             }
-            applyAnimatorProperties(valueAnimator, path)
         }
     }
 
