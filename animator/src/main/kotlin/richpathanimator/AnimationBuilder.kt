@@ -11,7 +11,7 @@ import com.richpath.pathparser.PathDataNode
 import com.richpath.pathparser.PathParserCompat
 
 class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
-                       private vararg val paths: RichPath) {
+                       private val paths: Array<RichPath>) {
 
     companion object {
         private const val DEFAULT_DURATION = 300L
@@ -33,12 +33,16 @@ class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
         }
     }
 
-    fun andAnimate(vararg paths: RichPath): AnimationBuilder {
-        return richPathAnimator.addAnimationBuilder(*paths)
+    fun andAnimate(paths: Array<RichPath>): AnimationBuilder {
+        return richPathAnimator.addAnimationBuilder(paths)
     }
 
-    fun thenAnimate(vararg paths: RichPath): AnimationBuilder {
-        return richPathAnimator.thenAnimate(*paths)
+    fun thenAnimate(path: RichPath): AnimationBuilder {
+        return thenAnimate(arrayOf(path))
+    }
+
+    fun thenAnimate(paths: Array<RichPath>): AnimationBuilder {
+        return richPathAnimator.thenAnimate(paths)
     }
 
     /**
