@@ -19,11 +19,11 @@ class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
 
     val animators = arrayListOf<ValueAnimator>()
 
-    var duration = DEFAULT_DURATION
-    var startDelay = DEFAULT_START_DELAY
-    var interpolator: Interpolator? = null
-    var repeatMode: RepeatMode = RepeatMode.Restart
-    var repeatCount = 0
+    private var duration = DEFAULT_DURATION
+    private var startDelay = DEFAULT_START_DELAY
+    private var interpolator: Interpolator? = null
+    private var repeatMode: RepeatMode = RepeatMode.Restart
+    private var repeatCount = 0
 
     private fun property(propertyName: String, vararg values: Float) {
         for (path in paths) {

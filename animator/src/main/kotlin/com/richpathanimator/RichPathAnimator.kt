@@ -11,7 +11,7 @@ class RichPathAnimator {
     var startDelay = -1L
     var interpolator: Interpolator? = null
     var repeatMode: RepeatMode = RepeatMode.None
-    var repeatCount = -2
+    var repeatCount: Int? = null
     var animationListener: AnimationListener? = null
 
     private val animationBuilders = arrayListOf<AnimationBuilder>()
@@ -58,11 +58,9 @@ class RichPathAnimator {
             val animatorList = animationBuilder.animators
             animators.addAll(animatorList)
             if (repeatMode != RepeatMode.None) {
-                animationBuilder.repeatMode = repeatMode
+                animationBuilder.repeatMode(repeatMode)
             }
-            if (repeatCount != -2) {
-                animationBuilder.repeatCount = repeatCount
-            }
+            repeatCount?.let(animationBuilder::repeatCount)
         }
 
         val animatorSet = AnimatorSet()
