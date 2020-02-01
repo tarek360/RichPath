@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="93.5dp"
+    android:height="64dp"
+    android:viewportHeight="280"
+    android:viewportWidth="409">
+    <path
+        android:fillColor="#FFF7F7F7"
+        android:pathData="@string/hippo_path" />
+</vector>
