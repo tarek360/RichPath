@@ -1,22 +1,19 @@
 package com.richpathanimator.sample;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.richpath.RichPath;
 import com.richpath.RichPathView;
-import com.richpathanimator.AnimationListener;
 import com.richpathanimator.RichPathAnimator;
 
 public class AnimationSamplesActivity extends AppCompatActivity {
 
     private RichPathView commandRichPathView;
-    private RichPathView androidRichPathView;
     private RichPathView arrowSearchRichPathView;
     private RichPathView notificationsRichPathView;
     private RichPathView playlistAddCheckRichPathView;
@@ -30,7 +27,6 @@ public class AnimationSamplesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animation_samples);
 
         commandRichPathView = findViewById(R.id.ic_command);
-        androidRichPathView = findViewById(R.id.ic_android);
         arrowSearchRichPathView = findViewById(R.id.ic_arrow_search);
         notificationsRichPathView = findViewById(R.id.ic_notifications);
         playlistAddCheckRichPathView = findViewById(R.id.ic_playlist_add_check);

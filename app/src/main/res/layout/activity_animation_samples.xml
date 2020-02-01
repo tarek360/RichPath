@@ -20,7 +20,7 @@
             android:text="Tap any shape to animate it!"
             android:textSize="18sp" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:padding="8dp"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/love_face"
                 app:layout_constraintStart_toStartOf="parent"
                 app:vector="@drawable/ic_command" />
@@ -42,6 +43,7 @@
                 android:layout_margin="4dp"
                 android:onClick="animateLoveFace"
                 android:padding="8dp"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ic_command"
                 app:vector="@drawable/face_love" />
@@ -93,7 +95,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ic_arrow_search"
                 app:vector="@drawable/ic_playlist_add_check" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 </ScrollView>
