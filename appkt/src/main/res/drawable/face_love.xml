@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+
+    <path
+        android:name="face"
+        android:fillColor="#FFE254"
+        android:pathData="M 16.6 3.8 C 23.6140163229 3.8 29.3 9.48598367715 29.3 16.5 C 29.3 23.5140163229 23.6140163229 29.2 16.6 29.2 C 9.58598367715 29.2 3.9 23.5140163229 3.9 16.5 C 3.9 9.48598367715 9.58598367715 3.8 16.6 3.8 Z" />
+    <path
+        android:name="l_eye"
+        android:fillColor="#F52C5B"
+        android:pathData="M13,7.2c2.3,3.2-4,8.6-4,8.6s-7.7-2.1-6.8-6.1c0.9-3.8,5.4-1.4,5.4-1.4S10.8,4.1,13,7.2z" />
+    <path
+        android:name="r_eye"
+        android:fillColor="#F52C5B"
+        android:pathData="M25.4,3.9c2.3,3.2-4,8.6-4,8.6s-7.7-2.1-6.8-6.1C15.5,2.6,20,5,20,5S23.2,0.8,25.4,3.9z" />
+    <path
+        android:name="mouth"
+        android:fillColor="#D61A4C"
+        android:pathData="M18.8,27.4c3.9-0.8,6.5-4.7,5.6-8.6l-14.2,3C11.1,25.7,14.9,28.2,18.8,27.4z" />
+    <path
+        android:name="tongue"
+        android:fillColor="#F52C5B"
+        android:pathData="M12.8,25.9c1.6,1.3,3.8,1.9,6,1.4c2.2-0.5,4-1.9,5-3.7c-2.1-0.8-3.6-0.7-5.8-0.2
+C15.7,23.9,14.7,24.2,12.8,25.9z" />
+</vector>

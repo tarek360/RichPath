@@ -1,0 +1,80 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportHeight="24.0"
+    android:viewportWidth="24.0">
+
+    <path
+        android:name="part1"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#6484fc"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0" />
+
+    <path
+        android:name="part2"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#c83ccb"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.125" />
+
+    <path
+        android:name="part3"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#724bb7"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.250" />
+
+    <path
+        android:name="part4"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#f75179"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.375" />
+
+    <path
+        android:name="part5"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#f95b54"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.5" />
+
+    <path
+        android:name="part6"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#f57940"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.625" />
+
+    <path
+        android:name="part7"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#f9e561"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.750" />
+
+    <path
+        android:name="part8"
+        android:pathData="@string/command_path_data"
+        android:strokeColor="#7ceb8f"
+        android:strokeLineCap="round"
+        android:strokeWidth="2"
+        android:trimPathEnd="0.125"
+        android:trimPathOffset="0.875" />
+
+
+</vector>
