@@ -3,8 +3,9 @@ package com.richpathanimator;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
-import android.support.annotation.IntDef;
 import android.view.animation.Interpolator;
+
+import androidx.annotation.IntDef;
 
 import com.richpath.RichPath;
 

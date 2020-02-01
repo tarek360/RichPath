@@ -26,73 +26,68 @@
             android:layout_margin="16dp">
 
             <com.richpath.RichPathView
-                android:id="@+id/ic_command"
+                android:id="@+id/icCommandRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:padding="8dp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/love_face"
+                app:layout_constraintEnd_toStartOf="@+id/loveFaceRichPathView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:vector="@drawable/ic_command" />
 
             <com.richpath.RichPathView
-                android:id="@+id/love_face"
+                android:id="@+id/loveFaceRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:onClick="animateLoveFace"
                 android:padding="8dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ic_command"
+                app:layout_constraintStart_toEndOf="@+id/icCommandRichPathView"
                 app:vector="@drawable/face_love" />
 
             <com.richpath.RichPathView
-                android:id="@+id/animal"
+                android:id="@+id/animalRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:onClick="animateAnimal"
                 android:padding="6dp"
-                app:layout_constraintEnd_toStartOf="@+id/love_face"
+                app:layout_constraintEnd_toStartOf="@+id/loveFaceRichPathView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ic_command"
+                app:layout_constraintTop_toBottomOf="@+id/icCommandRichPathView"
                 app:vector="@drawable/animal" />
 
             <com.richpath.RichPathView
-                android:id="@+id/ic_arrow_search"
+                android:id="@+id/icArrowSearchRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:onClick="animateArrowToSearch"
                 android:padding="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ic_command"
-                app:layout_constraintTop_toBottomOf="@+id/ic_command"
+                app:layout_constraintStart_toEndOf="@+id/icCommandRichPathView"
+                app:layout_constraintTop_toBottomOf="@+id/icCommandRichPathView"
                 app:vector="@drawable/ic_arrow_search" />
 
             <com.richpath.RichPathView
-                android:id="@+id/ic_notifications"
+                android:id="@+id/icNotificationsRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:onClick="animateNotification"
-                app:layout_constraintEnd_toStartOf="@+id/love_face"
+                app:layout_constraintEnd_toStartOf="@+id/loveFaceRichPathView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/animal"
+                app:layout_constraintTop_toBottomOf="@+id/animalRichPathView"
                 app:vector="@drawable/ic_notifications" />
 
             <com.richpath.RichPathView
-                android:id="@+id/ic_playlist_add_check"
+                android:id="@+id/icPlaylistAddCheckRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:onClick="animatePlaylistAddCheck"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ic_command"
-                app:layout_constraintTop_toBottomOf="@+id/ic_arrow_search"
+                app:layout_constraintStart_toEndOf="@+id/icCommandRichPathView"
+                app:layout_constraintTop_toBottomOf="@+id/icArrowSearchRichPathView"
                 app:vector="@drawable/ic_playlist_add_check" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

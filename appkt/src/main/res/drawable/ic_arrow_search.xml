@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="109.7dp"
+    android:height="64dp"
+    android:viewportWidth="48"
+    android:viewportHeight="24">
+
+    <group
+        android:pivotX="24"
+        android:pivotY="12"
+        android:scaleX="1"
+        android:scaleY="1">
+
+        <path
+            android:name="stem"
+            android:pathData="M24.7,12.7 C24.70,12.7 31.8173374,19.9066081 31.8173371,19.9066082 C32.7867437,20.7006357 34.4599991,23 37.5,23 C40.54,23 43,20.54 43,17.5 C43,14.46 40.54,12 37.5,12 C34.46,12 33.2173088,12 31.8173371,12 C31.8173374,12 18.8477173,12 18.8477173,12"
+            android:strokeColor="#FFF7F7F7"
+            android:strokeWidth="2"
+            android:trimPathEnd="1"
+            android:trimPathStart="0.75" />
+
+        <path
+            android:name="search_circle"
+            android:pathData="M25.39,13.39 A 5.5 5.5 0 1 1 17.61 5.61 A 5.5 5.5 0 1 1 25.39 13.39"
+            android:strokeColor="#FFF7F7F7"
+            android:strokeWidth="2"
+            android:trimPathEnd="0" />
+
+        <group android:name="arrow_head">
+            <path
+                android:name="arrow_head_top"
+                android:pathData="M16.7017297,12.6957157 L24.7043962,4.69304955"
+                android:strokeColor="#FFF7F7F7"
+                android:strokeWidth="2"
+                android:trimPathEnd="1" />
+
+            <path
+                android:name="arrow_head_bottom"
+                android:pathData="M16.7107986,11.2764828 L24.7221527,19.2878361"
+                android:strokeColor="#FFF7F7F7"
+                android:strokeWidth="2"
+                android:trimPathEnd="1" />
+        </group>
+    </group>
+</vector>

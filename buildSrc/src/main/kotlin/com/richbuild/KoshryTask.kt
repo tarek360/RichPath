@@ -9,7 +9,6 @@ import org.gradle.api.tasks.TaskAction
 
 open class KoshryTask : DefaultTask() {
 
-
   @TaskAction
   fun run() {
 

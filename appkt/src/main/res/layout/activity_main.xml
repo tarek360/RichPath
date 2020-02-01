@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context="com.richpathanimator.sample.MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_name"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-10dp"
+        android:text="@string/animator"
+        android:textColor="#888888"
+        android:textSize="20sp" />
+
+    <com.richpath.RichPathView
+        android:id="@+id/icAndroidRichPathView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subtitle"
+        android:layout_centerHorizontal="true"
+        app:vector="@drawable/ic_android" />
+
+    <Button
+        android:id="@+id/animationSamplesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icAndroidRichPathView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/animation_samples" />
+
+    <Button
+        android:id="@+id/compoundViewSamplesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animationSamplesButton"
+        android:layout_centerHorizontal="true"
+        android:text="@string/compound_view_samples" />
+
+</RelativeLayout>

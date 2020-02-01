@@ -6,7 +6,7 @@ local.properties
 git
 .DS_Store
 /build
-/buildSrc/build
+*/build/*
 /captures
 .externalNativeBuild
 *.jks

@@ -21,12 +21,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile "junit:junit:$junitVersion"
-    compile project(path: ':animator')
+
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    implementation "androidx.core:core-ktx:$ktxVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    implementation project(path: ':richpath')
+    implementation project(path: ':animator')
 }
