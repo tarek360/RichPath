@@ -28,14 +28,14 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateCommand() {
 
-        val part1 = icCommandRichPathView.findRichPathByName("part1")
-        val part2 = icCommandRichPathView.findRichPathByName("part2")
-        val part3 = icCommandRichPathView.findRichPathByName("part3")
-        val part4 = icCommandRichPathView.findRichPathByName("part4")
-        val part5 = icCommandRichPathView.findRichPathByName("part5")
-        val part6 = icCommandRichPathView.findRichPathByName("part6")
-        val part7 = icCommandRichPathView.findRichPathByName("part7")
-        val part8 = icCommandRichPathView.findRichPathByName("part8")
+        val part1 = icCommandRichPathView.findRichPathByName("part1")!!
+        val part2 = icCommandRichPathView.findRichPathByName("part2")!!
+        val part3 = icCommandRichPathView.findRichPathByName("part3")!!
+        val part4 = icCommandRichPathView.findRichPathByName("part4")!!
+        val part5 = icCommandRichPathView.findRichPathByName("part5")!!
+        val part6 = icCommandRichPathView.findRichPathByName("part6")!!
+        val part7 = icCommandRichPathView.findRichPathByName("part7")!!
+        val part8 = icCommandRichPathView.findRichPathByName("part8")!!
 
         RichPathAnimator
                 .animate(part1)
@@ -75,7 +75,7 @@ class AnimationSamplesActivity : AppCompatActivity() {
         val elephantPathData = getString(R.string.elephant_path)
         val bullPathData = getString(R.string.bull_path)
 
-        val richPath = animalRichPathView.findFirstRichPath()
+        val richPath = animalRichPathView.findFirstRichPath()!!
 
         RichPathAnimator
                 .animate(richPath)
@@ -95,10 +95,10 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateArrowToSearch() {
 
-        val searchCircle = icArrowSearchRichPathView.findRichPathByName("search_circle")
-        val stem = icArrowSearchRichPathView.findRichPathByName("stem")
-        val arrowTop = icArrowSearchRichPathView.findRichPathByName("arrow_head_top")
-        val arrowBottom = icArrowSearchRichPathView.findRichPathByName("arrow_head_bottom")
+        val searchCircle = icArrowSearchRichPathView.findRichPathByName("search_circle")!!
+        val stem = icArrowSearchRichPathView.findRichPathByName("stem")!!
+        val arrowTop = icArrowSearchRichPathView.findRichPathByName("arrow_head_top")!!
+        val arrowBottom = icArrowSearchRichPathView.findRichPathByName("arrow_head_bottom")!!
 
         if (reverse) {
             RichPathAnimator.animate(stem)
@@ -124,8 +124,8 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateNotification() {
 
-        val top = icNotificationsRichPathView.findRichPathByIndex(0)
-        val bottom = icNotificationsRichPathView.findRichPathByIndex(1)
+        val top = icNotificationsRichPathView.findRichPathByIndex(0)!!
+        val bottom = icNotificationsRichPathView.findRichPathByIndex(1)!!
 
         RichPathAnimator.animate(top)
                 .interpolator(DecelerateInterpolator())
@@ -141,18 +141,18 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animatePlaylistAddCheck() {
 
-        val line1 = icPlaylistAddCheckRichPathView.findRichPathByName("line1")
-        val line2 = icPlaylistAddCheckRichPathView.findRichPathByName("line2")
-        val line3 = icPlaylistAddCheckRichPathView.findRichPathByName("line3")
-        val tick = icPlaylistAddCheckRichPathView.findRichPathByName("tick")
-        val line3AndTick = icPlaylistAddCheckRichPathView.findRichPathByName("line3_tick")
+        val line1 = icPlaylistAddCheckRichPathView.findRichPathByName("line1")!!
+        val line2 = icPlaylistAddCheckRichPathView.findRichPathByName("line2")!!
+        val line3 = icPlaylistAddCheckRichPathView.findRichPathByName("line3")!!
+        val tick = icPlaylistAddCheckRichPathView.findRichPathByName("tick")!!
+        val line3AndTick = icPlaylistAddCheckRichPathView.findRichPathByName("line3_tick")!!
 
-        line1?.trimPathEnd = 0f
-        line2?.trimPathEnd = 0f
-        line3?.trimPathEnd = 0f
-        tick?.trimPathEnd = 0f
-        line3AndTick?.trimPathEnd = 0f
-        line3AndTick?.trimPathStart = 0f
+        line1.trimPathEnd = 0f
+        line2.trimPathEnd = 0f
+        line3.trimPathEnd = 0f
+        tick.trimPathEnd = 0f
+        line3AndTick.trimPathEnd = 0f
+        line3AndTick.trimPathStart = 0f
 
         val duration = 400
 
@@ -194,11 +194,11 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateLoveFace() {
 
-        val rEye = loveFaceRichPathView?.findRichPathByName("r_eye")
-        val lEye = loveFaceRichPathView?.findRichPathByName("l_eye")
+        val rEye = loveFaceRichPathView?.findRichPathByName("r_eye")!!
+        val lEye = loveFaceRichPathView?.findRichPathByName("l_eye")!!
 
-        rEye?.isPivotToCenter = true
-        lEye?.isPivotToCenter = true
+        rEye.isPivotToCenter = true
+        lEye.isPivotToCenter = true
 
         RichPathAnimator
                 .animate(rEye, lEye)

@@ -1,17 +1,16 @@
-package richpathanimator
+package com.richpathanimator
 
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.util.Log
 import android.view.animation.Interpolator
-import richpathanimator.RichPathAnimator.*
 import com.richpath.RichPath
 import com.richpath.pathparser.PathDataNode
 import com.richpath.pathparser.PathParserCompat
 
 class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
-                       private val paths: Array<RichPath>) {
+                       private val paths: Array<out RichPath>) {
 
     companion object {
         private const val DEFAULT_DURATION = 300L
@@ -33,15 +32,11 @@ class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
         }
     }
 
-    fun andAnimate(paths: Array<RichPath>): AnimationBuilder {
+    fun andAnimate(vararg paths: RichPath): AnimationBuilder {
         return richPathAnimator.addAnimationBuilder(paths)
     }
 
-    fun thenAnimate(path: RichPath): AnimationBuilder {
-        return thenAnimate(arrayOf(path))
-    }
-
-    fun thenAnimate(paths: Array<RichPath>): AnimationBuilder {
+    fun thenAnimate(vararg paths: RichPath): AnimationBuilder {
         return richPathAnimator.thenAnimate(paths)
     }
 
@@ -66,6 +61,11 @@ class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
     fun start(): RichPathAnimator {
         richPathAnimator.start()
         return richPathAnimator
+    }
+
+    @Deprecated("It doesn't make sense to cancel while you are still building")
+    fun cancel() {
+        richPathAnimator.cancel()
     }
 
     fun duration(duration: Long) = apply {

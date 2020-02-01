@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.richpath.RichPath;
 import com.richpath.RichPathView;
-import richpathanimator.AnimationListener;
-import richpathanimator.RichPathAnimator;
+import com.richpathanimator.AnimationListener;
+import com.richpathanimator.RichPathAnimator;
 
 public class MainActivity extends AppCompatActivity {
 

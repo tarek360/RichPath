@@ -1,4 +1,4 @@
-package richpathanimator
+package com.richpathanimator
 
 import com.richpath.RichPath
 

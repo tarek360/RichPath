@@ -1,4 +1,4 @@
-package richpathanimator
+package com.richpathanimator
 
 import android.animation.TypeEvaluator
 import com.richpath.pathparser.PathDataNode

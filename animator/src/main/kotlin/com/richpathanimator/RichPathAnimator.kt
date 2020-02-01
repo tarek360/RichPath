@@ -1,4 +1,4 @@
-package richpathanimator
+package com.richpathanimator
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -16,32 +16,36 @@ class RichPathAnimator {
 
     private val animationBuilders = arrayListOf<AnimationBuilder>()
 
-    private lateinit var animatorSet: AnimatorSet
+    private var animatorSet: AnimatorSet? = null
 
     private var prev: RichPathAnimator? = null
     private var next: RichPathAnimator? = null
 
-    sealed class RepeatMode(val value: Int) {
-        object None : RepeatMode(-2)
-        object Restart : RepeatMode(1)
-        object Reverse : RepeatMode(2)
-    }
-
     companion object {
         const val INFINITE = -1
-        @JvmStatic fun animate(paths: Array<RichPath>): AnimationBuilder {
+
+        @JvmField
+        val NONE = RepeatMode.None
+        @JvmField
+        val RESTART = RepeatMode.Restart
+        @JvmField
+        val REVERSE = RepeatMode.Reverse
+
+        @JvmStatic
+        fun animate(vararg paths: RichPath): AnimationBuilder {
             val viewAnimator = RichPathAnimator()
             return viewAnimator.addAnimationBuilder(paths)
         }
+
     }
 
-    internal fun addAnimationBuilder(paths: Array<RichPath>): AnimationBuilder {
+    internal fun addAnimationBuilder(paths: Array<out RichPath>): AnimationBuilder {
         val animationBuilder = AnimationBuilder(this, paths)
         animationBuilders.add(animationBuilder)
         return animationBuilder
     }
 
-    internal fun thenAnimate(paths: Array<RichPath>): AnimationBuilder {
+    internal fun thenAnimate(paths: Array<out RichPath>): AnimationBuilder {
         val nextRichPathAnimator = RichPathAnimator()
         this.next = nextRichPathAnimator
         nextRichPathAnimator.prev = this
@@ -97,16 +101,20 @@ class RichPathAnimator {
 
     fun start(): RichPathAnimator {
         prev?.start() ?: run {
-            animatorSet = createAnimatorSet()
-            animatorSet.start()
+            animatorSet = createAnimatorSet().apply {
+                start()
+            }
         }
         return this
     }
 
     fun cancel() {
-        if (animatorSet.isRunning) {
-            animatorSet.cancel()
+        animatorSet?.let {
+            if (it.isRunning) {
+                it.cancel()
+            }
         }
+
         next?.let {
             it.cancel()
             next = null

@@ -1,4 +1,4 @@
-package richpathanimator
+package com.richpathanimator
 
 interface AnimationListener {
 
