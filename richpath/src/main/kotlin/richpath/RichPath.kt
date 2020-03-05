@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.XmlResourceParser
 import android.graphics.*
 import com.richpath.listener.OnRichPathUpdatedListener
-import com.richpath.model.Group
+import richpath.model.Group
 import com.richpath.pathparser.PathDataNode
 import com.richpath.pathparser.PathParser
 import com.richpath.pathparser.PathParserCompat

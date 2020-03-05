@@ -5,7 +5,7 @@ import android.content.res.XmlResourceParser
 import android.graphics.Paint
 import android.graphics.Path
 import androidx.core.content.ContextCompat
-import com.richpath.model.Group
+import richpath.model.Group
 import richpath.model.Vector
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
