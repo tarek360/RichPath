@@ -9,7 +9,7 @@ import com.richpath.pathparser.PathDataNode
 import com.richpath.pathparser.PathParser
 import com.richpath.pathparser.PathParserCompat
 import com.richpath.util.PathUtils
-import util.XmlParser
+import richpath.util.XmlParser
 
 class RichPath(src: Path?) : Path(src) {
 

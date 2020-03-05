@@ -9,7 +9,7 @@ import androidx.annotation.IntRange
 import com.richpath.listener.OnRichPathUpdatedListener
 import com.richpath.pathparser.PathParser
 import com.richpath.util.PathUtils
-import model.Vector
+import richpath.model.Vector
 import kotlin.math.min
 
 class RichPathDrawable(private val vector: Vector?, private val scaleType: ImageView.ScaleType): Drawable() {

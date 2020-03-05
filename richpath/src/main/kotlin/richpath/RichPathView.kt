@@ -9,12 +9,11 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
-import androidx.appcompat.widget.AppCompatImageView
 import com.richpath.R
 import com.richpath.pathparser.PathParser
-import model.Vector
+import richpath.model.Vector
 import org.xmlpull.v1.XmlPullParserException
-import util.XmlParser
+import richpath.util.XmlParser
 import java.io.IOException
 import kotlin.math.min
 
