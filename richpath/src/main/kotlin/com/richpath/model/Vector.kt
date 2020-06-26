@@ -1,9 +1,9 @@
-package richpath.model
+package com.richpath.model
 
 import android.content.Context
 import android.content.res.XmlResourceParser
-import richpath.RichPath
-import richpath.util.XmlParser
+import com.richpath.RichPath
+import com.richpath.util.XmlParser
 
 class Vector {
     companion object {

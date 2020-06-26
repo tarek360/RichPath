@@ -1,9 +1,9 @@
-package richpath.model
+package com.richpath.model
 
 import android.content.Context
 import android.content.res.XmlResourceParser
 import android.graphics.Matrix
-import richpath.util.XmlParser
+import com.richpath.util.XmlParser
 
 class Group(context: Context, xpp: XmlResourceParser) {
     companion object {

@@ -1,4 +1,4 @@
-package richpath.pathparser
+package com.richpath.pathparser
 
 import android.graphics.Path
 import java.lang.reflect.InvocationTargetException

@@ -1,10 +1,10 @@
-package richpath.util
+package com.richpath.util
 
 import android.graphics.Matrix
 import android.graphics.Path
 import android.graphics.RectF
 import android.graphics.Region
-import richpath.pathparser.PathDataNode
+import com.richpath.pathparser.PathDataNode
 
 object PathUtils {
 

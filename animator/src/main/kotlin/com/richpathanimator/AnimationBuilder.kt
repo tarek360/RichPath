@@ -5,9 +5,9 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.util.Log
 import android.view.animation.Interpolator
-import richpath.RichPath
-import richpath.pathparser.PathDataNode
-import richpath.pathparser.PathParserCompat
+import com.richpath.RichPath
+import com.richpath.pathparser.PathDataNode
+import com.richpath.pathparser.PathParserCompat
 
 class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
                        private val paths: Array<out RichPath>) {

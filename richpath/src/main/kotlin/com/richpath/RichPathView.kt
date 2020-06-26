@@ -1,4 +1,4 @@
-package richpath
+package com.richpath
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,11 +9,10 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
 import androidx.appcompat.widget.AppCompatImageView
-import com.richpath.R
-import richpath.pathparser.PathParser
-import richpath.model.Vector
+import com.richpath.pathparser.PathParser
+import com.richpath.model.Vector
 import org.xmlpull.v1.XmlPullParserException
-import richpath.util.XmlParser
+import com.richpath.util.XmlParser
 import java.io.IOException
 import kotlin.math.min
 

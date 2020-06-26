@@ -1,6 +1,6 @@
 package com.richpathanimator
 
-import richpath.RichPath
+import com.richpath.RichPath
 
 interface AnimationUpdateListener {
 

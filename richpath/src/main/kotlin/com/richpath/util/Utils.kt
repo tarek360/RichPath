@@ -1,4 +1,4 @@
-package richpath.util
+package com.richpath.util
 
 import android.content.Context
 import android.graphics.Color

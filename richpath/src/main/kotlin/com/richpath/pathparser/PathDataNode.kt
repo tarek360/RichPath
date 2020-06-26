@@ -1,8 +1,8 @@
-package richpath.pathparser
+package com.richpath.pathparser
 
 import android.graphics.Path
 import android.util.Log
-import richpath.pathparser.PathParserCompat.copyOfRange
+import com.richpath.pathparser.PathParserCompat.copyOfRange
 import kotlin.math.*
 
 /**

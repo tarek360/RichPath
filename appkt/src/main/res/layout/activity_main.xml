@@ -27,7 +27,7 @@
         android:textColor="#888888"
         android:textSize="20sp" />
 
-    <richpath.RichPathView
+    <com.richpath.RichPathView
         android:id="@+id/icAndroidRichPathView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

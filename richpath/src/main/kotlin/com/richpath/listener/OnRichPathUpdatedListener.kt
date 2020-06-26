@@ -1,4 +1,4 @@
-package richpath.listener
+package com.richpath.listener
 
 interface OnRichPathUpdatedListener {
 

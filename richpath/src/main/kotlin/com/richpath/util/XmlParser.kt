@@ -1,15 +1,15 @@
-package richpath.util
+package com.richpath.util
 
 import android.content.Context
 import android.content.res.XmlResourceParser
 import android.graphics.Paint
 import android.graphics.Path
 import androidx.core.content.ContextCompat
-import richpath.model.Group
-import richpath.model.Vector
+import com.richpath.model.Group
+import com.richpath.model.Vector
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
-import richpath.RichPath
+import com.richpath.RichPath
 import java.io.IOException
 import java.util.*
 

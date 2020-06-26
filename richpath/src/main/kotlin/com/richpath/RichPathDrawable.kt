@@ -1,4 +1,4 @@
-package richpath
+package com.richpath
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
@@ -6,10 +6,10 @@ import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.ImageView.ScaleType
 import androidx.annotation.IntRange
-import richpath.listener.OnRichPathUpdatedListener
-import richpath.pathparser.PathParser
-import richpath.util.PathUtils
-import richpath.model.Vector
+import com.richpath.listener.OnRichPathUpdatedListener
+import com.richpath.pathparser.PathParser
+import com.richpath.util.PathUtils
+import com.richpath.model.Vector
 import kotlin.math.min
 
 class RichPathDrawable(private val vector: Vector?, private val scaleType: ImageView.ScaleType): Drawable() {
