@@ -11,7 +11,7 @@ import com.richpath.pathparser.PathParserCompat
 import com.richpath.util.PathUtils
 import richpath.util.XmlParser
 
-class RichPath(src: Path?) : Path(src) {
+class RichPath(private val src: Path) : Path(src) {
 
     companion object {
         const val TAG_NAME = "path"
@@ -85,10 +85,10 @@ class RichPath(src: Path?) : Path(src) {
             val deltaValue = value - field
             if (isPivotToCenter) {
                 PathUtils.setPathRotation(this, deltaValue)
-                PathUtils.setPathRotation(originalPath, deltaValue)
+                PathUtils.setPathRotation(src, deltaValue)
             } else {
                 PathUtils.setPathRotation(this, deltaValue, pivotX, pivotY)
-                PathUtils.setPathRotation(originalPath, deltaValue, pivotX, pivotY)
+                PathUtils.setPathRotation(src, deltaValue, pivotX, pivotY)
             }
             field = value
             onPathUpdated()
@@ -98,17 +98,17 @@ class RichPath(src: Path?) : Path(src) {
             if (isPivotToCenter) {
                 //reset scaling
                 PathUtils.setPathScaleX(this, 1.0f / field)
-                PathUtils.setPathScaleX(originalPath, 1.0f / field)
+                PathUtils.setPathScaleX(src, 1.0f / field)
                 //new scaling
                 PathUtils.setPathScaleX(this, value)
-                PathUtils.setPathScaleX(originalPath, value)
+                PathUtils.setPathScaleX(src, value)
             } else {
                 //reset scaling
                 PathUtils.setPathScaleX(this, 1.0f / field, pivotX, pivotY)
-                PathUtils.setPathScaleX(originalPath, 1.0f / field, pivotX, pivotY)
+                PathUtils.setPathScaleX(src, 1.0f / field, pivotX, pivotY)
                 //new scaling
                 PathUtils.setPathScaleX(this, value, pivotX, pivotY)
-                PathUtils.setPathScaleX(originalPath, value, pivotX, pivotY)
+                PathUtils.setPathScaleX(src, value, pivotX, pivotY)
             }
             field = value
             onPathUpdated()
@@ -117,16 +117,16 @@ class RichPath(src: Path?) : Path(src) {
         set(value) {
             if (isPivotToCenter) { //reset scaling
                 PathUtils.setPathScaleY(this, 1.0f / field)
-                PathUtils.setPathScaleY(originalPath, 1.0f / field)
+                PathUtils.setPathScaleY(src, 1.0f / field)
                 //new scaling
                 PathUtils.setPathScaleY(this, value)
-                PathUtils.setPathScaleY(originalPath, value)
+                PathUtils.setPathScaleY(src, value)
             } else { //reset scaling
                 PathUtils.setPathScaleY(this, 1.0f / field, pivotX, pivotY)
-                PathUtils.setPathScaleY(originalPath, 1.0f / field, pivotX, pivotY)
+                PathUtils.setPathScaleY(src, 1.0f / field, pivotX, pivotY)
                 //new scaling
                 PathUtils.setPathScaleY(this, value, pivotX, pivotY)
-                PathUtils.setPathScaleY(originalPath, value, pivotX, pivotY)
+                PathUtils.setPathScaleY(src, value, pivotX, pivotY)
             }
             field = value
             onPathUpdated()
@@ -134,7 +134,7 @@ class RichPath(src: Path?) : Path(src) {
     var translationX = 0f
         set(value) {
             PathUtils.setPathTranslationX(this, value - field)
-            PathUtils.setPathTranslationX(originalPath, value - field)
+            PathUtils.setPathTranslationX(src, value - field)
             field = value
             onPathUpdated()
 
@@ -142,7 +142,7 @@ class RichPath(src: Path?) : Path(src) {
     var translationY = 0f
         set(value) {
             PathUtils.setPathTranslationY(this, value - field)
-            PathUtils.setPathTranslationY(originalPath, value - field)
+            PathUtils.setPathTranslationY(src, value - field)
             field = value
             onPathUpdated()
         }
@@ -161,8 +161,6 @@ class RichPath(src: Path?) : Path(src) {
 
     private var pathMeasure: PathMeasure? = null
 
-    private var originalPath: Path? = null
-
     private var pathDataNodes: Array<PathDataNode>? = null
     private lateinit var matrices: ArrayList<Matrix>
 
@@ -171,7 +169,6 @@ class RichPath(src: Path?) : Path(src) {
     constructor(pathData: String): this(PathParser.createPathFromPathData(pathData))
 
     init {
-        originalPath = src
         init()
     }
 
@@ -185,7 +182,7 @@ class RichPath(src: Path?) : Path(src) {
 
     fun setWidth(width: Float) {
         PathUtils.setPathWidth(this, width)
-        PathUtils.setPathWidth(originalPath, width)
+        PathUtils.setPathWidth(src, width)
         onPathUpdated()
     }
 
@@ -193,7 +190,7 @@ class RichPath(src: Path?) : Path(src) {
 
     fun setHeight(height: Float) {
         PathUtils.setPathHeight(this, height)
-        PathUtils.setPathWidth(originalPath, height)
+        PathUtils.setPathWidth(src, height)
         onPathUpdated()
     }
 
@@ -220,7 +217,7 @@ class RichPath(src: Path?) : Path(src) {
     internal fun mapToMatrix(matrix: Matrix) {
         matrices.add(matrix)
         transform(matrix)
-        originalPath?.transform(matrix)
+        src.transform(matrix)
         mapPoints(matrix)
         updateOriginalDimens()
     }
@@ -297,7 +294,7 @@ class RichPath(src: Path?) : Path(src) {
             var start = (trimPathStart + trimPathOffset) % 1.0f
             var end = (trimPathEnd + trimPathOffset) % 1.0f
             val pathMeasure = pathMeasure ?: PathMeasure()
-            pathMeasure.setPath(originalPath, false)
+            pathMeasure.setPath(src, false)
             val len = pathMeasure.length
             start *= len
             end *= len
