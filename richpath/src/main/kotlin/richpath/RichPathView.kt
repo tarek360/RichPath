@@ -6,9 +6,9 @@ import android.graphics.Path
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
+import androidx.appcompat.widget.AppCompatImageView
 import com.richpath.R
 import com.richpath.pathparser.PathParser
 import richpath.model.Vector
@@ -17,7 +17,7 @@ import richpath.util.XmlParser
 import java.io.IOException
 import kotlin.math.min
 
-class RichPathView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : ImageView(context, attrs, defStyleAttr) {
+class RichPathView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : AppCompatImageView(context, attrs, defStyleAttr) {
 
     constructor(context: Context?, attrs: AttributeSet?): this(context, attrs, 0)
 
