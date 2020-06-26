@@ -161,7 +161,21 @@ class RichPath(private val src: Path) : Path(src) {
 
     private var pathMeasure: PathMeasure? = null
 
-    private var pathDataNodes: Array<PathDataNode>? = null
+    /**
+     * [pathDataNodes] couldn't be private.
+     * It could called by @see [com.richpathanimator.AnimationBuilder.pathData]
+     */
+    var pathDataNodes: Array<PathDataNode>? = null
+        set(value) {
+            value ?: return
+            PathUtils.setPathDataNodes(this, value)
+            field = value
+            for (matrix in matrices) {
+                transform(matrix)
+            }
+            onPathUpdated()
+        }
+
     private lateinit var matrices: ArrayList<Matrix>
 
     internal var onPathClickListener: OnPathClickListener? = null
@@ -234,18 +248,9 @@ class RichPath(private val src: Path) : Path(src) {
     }
 
     fun setPathData(pathData: String) {
-        setPathDataNodes(PathParserCompat.createNodesFromPathData(pathData))
-    }
-
-    private fun setPathDataNodes(pathDataNodes: Array<PathDataNode>) {
-        PathUtils.setPathDataNodes(this, pathDataNodes)
-        this.pathDataNodes = pathDataNodes
-
-        for (matrix in matrices) {
-            transform(matrix)
+        PathParserCompat.createNodesFromPathData(pathData)?.let {
+            pathDataNodes = it
         }
-
-        onPathUpdated()
     }
 
     fun inflate(context: Context, xpp: XmlResourceParser) {
