@@ -90,9 +90,7 @@ object PathParserCompat {
      * @param source The array of PathDataNode to be duplicated.
      * @return a deep copy of the <code>source</code>.
      */
-    fun deepCopyNodes(source: Array<PathDataNode>?): Array<PathDataNode>? {
-        source ?: return null
-
+    fun deepCopyNodes(source: Array<PathDataNode>): Array<PathDataNode> {
         val copy = arrayListOf<PathDataNode>()
         for (i in source.indices) {
             copy.add(i, PathDataNode(source[i]))
