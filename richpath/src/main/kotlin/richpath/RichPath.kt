@@ -83,7 +83,7 @@ class RichPath(src: Path?) : Path(src) {
     var rotation = 0f
         set(value) {
             val deltaValue = value - field
-            if (pivotToCenter) {
+            if (isPivotToCenter) {
                 PathUtils.setPathRotation(this, deltaValue)
                 PathUtils.setPathRotation(originalPath, deltaValue)
             } else {
@@ -95,7 +95,7 @@ class RichPath(src: Path?) : Path(src) {
         }
     var scaleX = 1f
         set(value) {
-            if (pivotToCenter) {
+            if (isPivotToCenter) {
                 //reset scaling
                 PathUtils.setPathScaleX(this, 1.0f / field)
                 PathUtils.setPathScaleX(originalPath, 1.0f / field)
@@ -115,7 +115,7 @@ class RichPath(src: Path?) : Path(src) {
         }
     var scaleY = 1f
         set(value) {
-            if (pivotToCenter) { //reset scaling
+            if (isPivotToCenter) { //reset scaling
                 PathUtils.setPathScaleY(this, 1.0f / field)
                 PathUtils.setPathScaleY(originalPath, 1.0f / field)
                 //new scaling
@@ -154,7 +154,7 @@ class RichPath(src: Path?) : Path(src) {
 
     var pivotX = 0f
     var pivotY = 0f
-    var pivotToCenter = false
+    var isPivotToCenter = false
 
     var onRichPathUpdatedListener: OnRichPathUpdatedListener? = null
         internal set
