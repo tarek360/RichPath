@@ -126,18 +126,18 @@ class RichPathView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
     }
 
     /**
-     * find the first {@link RichPath} or null if not found
+     * find the first [RichPath] or null if not found
      * <p>
      * This can be in handy if the vector consists of 1 path only
      *
-     * @return the {@link RichPath} object found or null
+     * @return the [RichPath] object found or null
      */
     fun findFirstRichPath(): RichPath? {
         return richPathDrawable?.findFirstRichPath()
     }
 
     /**
-     * find {@link RichPath} by its index or null if not found
+     * find [RichPath] by its index or null if not found
      * <p>
      * Note that the provided index must be the flattened index of the path
      * <p>
@@ -157,7 +157,7 @@ class RichPathView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
      * </pre>
      *
      * @param index the flattened index of the path
-     * @return the {@link RichPath} object found or null
+     * @return the [RichPath] object found or null
      */
     fun findRichPathByIndex(@IntRange(from = 0) index: Int): RichPath? {
         return richPathDrawable?.findRichPathByIndex(index)
