@@ -3,7 +3,7 @@ package com.richpathanimator
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.view.animation.Interpolator
-import com.richpath.RichPath
+import richpath.RichPath
 
 class RichPathAnimator {
 

@@ -3,12 +3,12 @@ package richpath
 import android.content.Context
 import android.content.res.XmlResourceParser
 import android.graphics.*
-import com.richpath.listener.OnRichPathUpdatedListener
+import richpath.listener.OnRichPathUpdatedListener
 import richpath.model.Group
-import com.richpath.pathparser.PathDataNode
-import com.richpath.pathparser.PathParser
-import com.richpath.pathparser.PathParserCompat
-import com.richpath.util.PathUtils
+import richpath.pathparser.PathDataNode
+import richpath.pathparser.PathParser
+import richpath.pathparser.PathParserCompat
+import richpath.util.PathUtils
 import richpath.util.XmlParser
 
 class RichPath(private val src: Path) : Path(src) {

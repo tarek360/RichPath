@@ -1,8 +1,8 @@
 package com.richpathanimator
 
 import android.animation.TypeEvaluator
-import com.richpath.pathparser.PathDataNode
-import com.richpath.pathparser.PathParserCompat
+import richpath.pathparser.PathDataNode
+import richpath.pathparser.PathParserCompat
 
 class PathEvaluator: TypeEvaluator<Array<PathDataNode>?> {
     private var evaluatedNodes: Array<PathDataNode>? = null

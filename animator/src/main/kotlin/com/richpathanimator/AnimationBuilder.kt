@@ -5,9 +5,9 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.util.Log
 import android.view.animation.Interpolator
-import com.richpath.RichPath
-import com.richpath.pathparser.PathDataNode
-import com.richpath.pathparser.PathParserCompat
+import richpath.RichPath
+import richpath.pathparser.PathDataNode
+import richpath.pathparser.PathParserCompat
 
 class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
                        private val paths: Array<out RichPath>) {
@@ -140,19 +140,22 @@ class AnimationBuilder(private val richPathAnimator: RichPathAnimator,
     }
 
     fun pathData(vararg pathData: String) = apply {
-        val pathDataNodes = arrayOfNulls<Array<PathDataNode>>(pathData.size)
+        val pathDataNodes = arrayListOf<Array<PathDataNode>>()
         for (i in pathData.indices) {
-            pathDataNodes[i] = PathParserCompat.createNodesFromPathData(pathData[i])
+            PathParserCompat.createNodesFromPathData(pathData[i])?.let {
+                pathDataNodes.add(it)
+            }
         }
 
-        if (!PathParserCompat.canMorph(*pathDataNodes)) {
+        val pathDataNodesArray = pathDataNodes.toTypedArray()
+        if (!PathParserCompat.canMorph(pathDataNodesArray)) {
             Log.w("RichPathAnimator", "the paths aren't compatible for morphing. The paths should have exact same length of commands, and exact same length of parameters for each command")
             return@apply
         }
 
         for (path in paths) {
-            val objectAnimator =
-                    ObjectAnimator.ofObject(path, "pathDataNodes", PathEvaluator(), *pathDataNodes)
+            val objectAnimator = ObjectAnimator.ofObject(path,
+                    "pathDataNodes", PathEvaluator(), *pathDataNodesArray)
             applyAnimatorProperties(objectAnimator, path)
         }
     }

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
 
-            <com.richpath.RichPathView
+            <richpath.RichPathView
                 android:id="@+id/icCommandRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:vector="@drawable/ic_command" />
 
-            <com.richpath.RichPathView
+            <richpath.RichPathView
                 android:id="@+id/loveFaceRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 app:layout_constraintStart_toEndOf="@+id/icCommandRichPathView"
                 app:vector="@drawable/face_love" />
 
-            <com.richpath.RichPathView
+            <richpath.RichPathView
                 android:id="@+id/animalRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/icCommandRichPathView"
                 app:vector="@drawable/animal" />
 
-            <com.richpath.RichPathView
+            <richpath.RichPathView
                 android:id="@+id/icArrowSearchRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/icCommandRichPathView"
                 app:vector="@drawable/ic_arrow_search" />
 
-            <com.richpath.RichPathView
+            <richpath.RichPathView
                 android:id="@+id/icNotificationsRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/animalRichPathView"
                 app:vector="@drawable/ic_notifications" />
 
-            <com.richpath.RichPathView
+            <richpath.RichPathView
                 android:id="@+id/icPlaylistAddCheckRichPathView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

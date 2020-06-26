@@ -6,9 +6,9 @@ import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.ImageView.ScaleType
 import androidx.annotation.IntRange
-import com.richpath.listener.OnRichPathUpdatedListener
-import com.richpath.pathparser.PathParser
-import com.richpath.util.PathUtils
+import richpath.listener.OnRichPathUpdatedListener
+import richpath.pathparser.PathParser
+import richpath.util.PathUtils
 import richpath.model.Vector
 import kotlin.math.min
 
@@ -127,7 +127,11 @@ class RichPathDrawable(private val vector: Vector?, private val scaleType: Image
     private fun listenToPathsUpdates() {
         val vector = vector ?: return
         for (path in vector.paths) {
-            path.onRichPathUpdatedListener = OnRichPathUpdatedListener { invalidateSelf() }
+            path.onRichPathUpdatedListener = object : OnRichPathUpdatedListener {
+                override fun onPathUpdated() {
+                    invalidateSelf()
+                }
+            }
         }
     }
 
@@ -147,7 +151,11 @@ class RichPathDrawable(private val vector: Vector?, private val scaleType: Image
         val vector = vector ?: return
 
         vector.paths.add(path)
-        path.onRichPathUpdatedListener = OnRichPathUpdatedListener { invalidateSelf() }
+        path.onRichPathUpdatedListener = object : OnRichPathUpdatedListener {
+            override fun onPathUpdated() {
+                invalidateSelf()
+            }
+        }
         invalidateSelf()
     }
 

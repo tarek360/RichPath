@@ -10,7 +10,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
 import androidx.appcompat.widget.AppCompatImageView
 import com.richpath.R
-import com.richpath.pathparser.PathParser
+import richpath.pathparser.PathParser
 import richpath.model.Vector
 import org.xmlpull.v1.XmlPullParserException
 import richpath.util.XmlParser
