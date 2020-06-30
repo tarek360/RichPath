@@ -29,14 +29,13 @@ class CompoundViewSamplesActivity : AppCompatActivity() {
                         || richPath == greenPath
                         || richPath == purplePath) {
                     richPath.strokeAlpha = 0.5f
-                    showToast(richPath.name)
+                    richPath.name?.let { showToast(it) }
                 }
             }
         }
     }
 
-    private fun showToast(msg: String?) {
-        msg ?: return
+    private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
