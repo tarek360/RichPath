@@ -23,15 +23,19 @@ public class CompoundViewSamplesActivity extends AppCompatActivity {
 
         colorPickerRichPathView.setOnPathClickListener(new RichPath.OnPathClickListener() {
             @Override
-            public void onClick(RichPath richPath) {
+            public void onClick(RichPath clickedRichPath) {
                 bluePath.setStrokeAlpha(0f);
                 redPath.setStrokeAlpha(0f);
                 greenPath.setStrokeAlpha(0f);
                 purplePath.setStrokeAlpha(0f);
 
-                richPath.setStrokeAlpha(0.5f);
-
-                showToast(richPath.getName());
+                if (clickedRichPath == bluePath
+                        || clickedRichPath == redPath
+                        || clickedRichPath == greenPath
+                        || clickedRichPath == purplePath) {
+                    clickedRichPath.setStrokeAlpha(0.5f);
+                    showToast(clickedRichPath.getName());
+                }
             }
         });
     }

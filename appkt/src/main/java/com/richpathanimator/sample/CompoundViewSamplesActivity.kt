@@ -3,6 +3,7 @@ package com.richpathanimator.sample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.richpath.RichPath
 import kotlinx.android.synthetic.main.activity_compound_view_samples.*
 
 class CompoundViewSamplesActivity : AppCompatActivity() {
@@ -16,19 +17,20 @@ class CompoundViewSamplesActivity : AppCompatActivity() {
         val greenPath = colorPickerRichPathView.findRichPathByName("greenPath")
         val purplePath = colorPickerRichPathView.findRichPathByName("purplePath")
 
-        colorPickerRichPathView.setOnPathClickListener { clickedRichPath ->
+        colorPickerRichPathView.onPathClickListener = object : RichPath.OnPathClickListener {
+            override fun onClick(richPath: RichPath) {
+                bluePath?.strokeAlpha = 0f
+                redPath?.strokeAlpha = 0f
+                greenPath?.strokeAlpha = 0f
+                purplePath?.strokeAlpha = 0f
 
-            bluePath?.strokeAlpha = 0f
-            redPath?.strokeAlpha = 0f
-            greenPath?.strokeAlpha = 0f
-            purplePath?.strokeAlpha = 0f
-
-            if (clickedRichPath == bluePath
-                    || clickedRichPath == redPath
-                    || clickedRichPath == greenPath
-                    || clickedRichPath == purplePath) {
-                clickedRichPath.strokeAlpha = 0.5f
-                showToast(clickedRichPath.name)
+                if (richPath == bluePath
+                        || richPath == redPath
+                        || richPath == greenPath
+                        || richPath == purplePath) {
+                    richPath.strokeAlpha = 0.5f
+                    richPath.name?.let { showToast(it) }
+                }
             }
         }
     }

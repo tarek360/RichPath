@@ -1,12 +1,8 @@
-package com.richpathanimator;
+package com.richpathanimator
 
-import com.richpath.RichPath;
+import com.richpath.RichPath
 
-/**
- * Created by tarek on 6/29/17.
- */
-
-public interface AnimationUpdateListener {
+interface AnimationUpdateListener {
 
     /**
      * Callback method to get the current animated path and the current animated value.
@@ -14,5 +10,5 @@ public interface AnimationUpdateListener {
      * @param path  the current animated path
      * @param value the current animated value.
      */
-    void update(RichPath path, float value);
+    fun update(path: RichPath, value: Float)
 }

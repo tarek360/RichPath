@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var richPathAnimator: RichPathAnimator? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,21 +29,21 @@ class MainActivity : AppCompatActivity() {
     private fun animateAndroid() {
 
         val allPaths = icAndroidRichPathView.findAllRichPaths()
-        val head = icAndroidRichPathView.findRichPathByName("head")
-        val body = icAndroidRichPathView.findRichPathByName("body")
-        val rHand = icAndroidRichPathView.findRichPathByName("r_hand")
-        val lHand = icAndroidRichPathView.findRichPathByName("l_hand")
+        val head = icAndroidRichPathView.findRichPathByName("head")!!
+        val body = icAndroidRichPathView.findRichPathByName("body")!!
+        val rHand = icAndroidRichPathView.findRichPathByName("r_hand")!!
+        val lHand = icAndroidRichPathView.findRichPathByName("l_hand")!!
 
-        RichPathAnimator.animate(*allPaths)
+        richPathAnimator = RichPathAnimator.animate(*allPaths)
                 .trimPathEnd(0f, 1f)
                 .duration(800)
                 .animationListener(object : AnimationListener {
                     override fun onStart() {
-                        head?.fillColor = Color.TRANSPARENT
-                        body?.fillColor = Color.TRANSPARENT
-                        rHand?.fillColor = Color.TRANSPARENT
-                        lHand?.fillColor = Color.TRANSPARENT
-                        rHand?.rotation = 0f
+                        head.fillColor = Color.TRANSPARENT
+                        body.fillColor = Color.TRANSPARENT
+                        rHand.fillColor = Color.TRANSPARENT
+                        lHand.fillColor = Color.TRANSPARENT
+                        rHand.rotation = 0f
                     }
 
                     override fun onStop() {}
@@ -60,6 +62,11 @@ class MainActivity : AppCompatActivity() {
                 .rotation(0f)
                 .duration(500)
                 .start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        richPathAnimator?.cancel()
     }
 
     private fun openAnimationSamples() {

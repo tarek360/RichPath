@@ -214,7 +214,7 @@ public class AnimationSamplesActivity extends AppCompatActivity {
                 .animate(rEye, lEye)
                 .interpolator(new LinearInterpolator())
                 .duration(800)
-                .repeatMode(RichPathAnimator.RESTART)
+//                .repeatMode(RichPathAnimator.RESTART)
                 .repeatCount(RichPathAnimator.INFINITE)
                 .scale(1, 0.9f, 1.07f, 1)
                 .fillColor(0XFFF52C5B, 0xFFF24976, 0XFFD61A4C, 0XFFF52C5B)
